@@ -1,0 +1,47 @@
+{
+  "schema": "playreceipt.video-candidate.v1",
+  "checkedAt": "2026-07-18T14:44:00+09:00",
+  "candidate": {
+    "path": "docs/demo/playreceipt-uplift-v3.mp4",
+    "sha256": "54c816c3f740be8d51d880e85febd1012a4996871df8edc8b64fe37b87d7e916",
+    "durationSeconds": 131.394014,
+    "sizeBytes": 10192106,
+    "video": {
+      "codec": "h264",
+      "width": 1920,
+      "height": 1080,
+      "framesPerSecond": 30
+    },
+    "audio": {
+      "codec": "aac",
+      "sampleRate": 22050,
+      "channels": 1,
+      "meanVolumeDb": -20.3,
+      "maxVolumeDb": -2.9
+    }
+  },
+  "sourceHashes": {
+    "docs/demo/CAPTIONS_V2.srt": "f012a1513391589aaea872c5df336a293b71cb5e593369127a42bf5b9f5de40d",
+    "docs/demo/VOICEOVER.txt": "18bb005cd8277fc8d96e1d579bc63376e90f7e6cc8ebfc8fd9ce5f61437568a0",
+    "docs/demo/playreceipt-uplift-ci.png": "f5ee93354c61339e440d950d94ef918d82d5016f43668e702b8a45795e517754",
+    "docs/demo/playreceipt-uplift-final.png": "3605f55dd4c060c748196d7143c4b6934aa39f4e144aaeada0ac2f3f922eb238"
+  },
+  "qualityChecks": {
+    "underThreeMinutes": true,
+    "audioPresent": true,
+    "burnedInCaptionCues": 12,
+    "blackSegmentsLongerThanOneSecond": 0,
+    "silenceSegmentsBelowMinus45DbLongerThanOneSecond": 0,
+    "visualContactSheetInspected": true,
+    "codexAndGpt56Explained": true,
+    "copyrightedMusicIncluded": false,
+    "thirdPartyTrademarkFootageIncluded": false,
+    "staleTenTestClaimRemoved": true
+  },
+  "sourcePreservation": {
+    "originalPublicVideoPreserved": "https://youtu.be/9M4A2hQYgps",
+    "priorCandidatePreserved": "docs/demo/playreceipt-uplift-v2.mp4",
+    "replacementPolicy": "Upload v3 as a new public YouTube video; do not overwrite or mislabel the original."
+  },
+  "verdict": "READY_FOR_INDEPENDENT_REVIEW"
+}

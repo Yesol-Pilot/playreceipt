@@ -39,7 +39,7 @@ Judges can also paste their own evidence JSON into the live app with no account.
 
 We used Codex and GPT-5.6 to turn the release decision into one deterministic Node.js audit engine consumed by the CLI, seeded simulator, HTTP API, responsive dashboard, repository-local Codex skill, and dependency-free GitHub Action. Identical canonical evidence produces an identical SHA-256 receipt ID. The action fails CI on `REPAIR` or `UNVERIFIED`, while `HUMAN_REVIEW` remains a visible warning instead of a manufactured pass.
 
-The implementation has no runtime npm dependencies. Ten regression tests cover missing evidence, stable receipts, documented command forms, POST abuse boundaries, Vercel adapter parity, GitHub Action semantics, static-path boundaries, and the live HTTP dashboard. The public Vercel deployment and every source claim are independently inspectable.
+The implementation has no runtime npm dependencies. Eleven regression tests cover missing evidence, stable receipts, documented command forms, POST abuse boundaries, Vercel adapter parity, GitHub Action semantics, GitHub expression safety, static-path boundaries, and the live HTTP dashboard. The public Vercel deployment and every source claim are independently inspectable.
 
 Codex was the engineering control loop, not a decorative tool. It challenged an early single-score direction, helped lock the four-verdict contract, implemented each adapter against one engine, drove browser QA at desktop and 390px, and turned adversarial review findings into permanent regression tests. We made the key product choice to keep fun outside machine `PASS`, the key architecture choice to make receipts content-addressed, and the key design choice to present a forensic ledger instead of a generic dashboard.
 

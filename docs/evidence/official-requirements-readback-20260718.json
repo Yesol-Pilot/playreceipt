@@ -1,0 +1,55 @@
+{
+  "schema": "playreceipt.official-requirements-readback.v1",
+  "checkedAt": "2026-07-18T15:39:56+09:00",
+  "source": "https://openai.devpost.com/rules",
+  "localHead": "2a206d1a93ab05b1d238d057c7131ab102a6b536",
+  "deadline": {
+    "official": "2026-07-21T17:00:00-07:00",
+    "korea": "2026-07-22T09:00:00+09:00"
+  },
+  "track": "Developer Tools",
+  "requirements": [
+    {
+      "requirement": "Working project built with Codex and GPT-5.6",
+      "status": "PROVEN_LOCAL_PUBLIC_BASE_LIVE",
+      "evidence": ["README.md", "src/audit.js", "docs/evidence/pre-review-hardening-20260718.json"]
+    },
+    {
+      "requirement": "Public YouTube demo under three minutes with audio covering the product, Codex, and GPT-5.6",
+      "status": "CANDIDATE_READY_PUBLIC_UPLOAD_PENDING",
+      "evidence": ["docs/demo/playreceipt-uplift-v3.mp4", "docs/demo/VOICEOVER.txt", "docs/evidence/video-uplift-candidate-20260718.json"]
+    },
+    {
+      "requirement": "Repository URL, relevant license, and clear prior-work separation",
+      "status": "PROVEN_LOCAL_PUBLIC_UPLIFT_PENDING",
+      "evidence": ["LICENSE", "README.md", "docs/SOURCE_PROVENANCE.md", "DECISION_RECORD.md"]
+    },
+    {
+      "requirement": "README explains Codex acceleration, owner decisions, and GPT-5.6 contribution",
+      "status": "PROVEN_LOCAL",
+      "evidence": ["README.md#how-codex-and-gpt-56-shaped-the-project"]
+    },
+    {
+      "requirement": "Developer Tool installation instructions, supported platforms, and no-build testing path",
+      "status": "PROVEN_LOCAL",
+      "evidence": ["README.md#installation-and-supported-platforms", "README.md#30-second-judge-path"]
+    },
+    {
+      "requirement": "Primary /feedback Codex Session ID",
+      "status": "RECORDED_SUBMISSION_READBACK_PENDING",
+      "evidence": ["docs/demo/DEVPOST_SUBMISSION.md", "docs/demo/YOUTUBE_V3_UPLOAD.md"]
+    },
+    {
+      "requirement": "Submission saved and entered before the deadline",
+      "status": "PUBLIC_BASE_SUBMITTED_V3_RESUBMISSION_PENDING",
+      "evidence": ["docs/evidence/devpost-submission-20260718.json"]
+    }
+  ],
+  "judgingCriteria": [
+    "Technological Implementation",
+    "Design",
+    "Potential Impact",
+    "Quality of the Idea"
+  ],
+  "completionVerdict": "NOT_COMPLETE"
+}

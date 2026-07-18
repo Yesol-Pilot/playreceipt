@@ -85,6 +85,7 @@
       "remaining": "Replace video URL and copy, save/submit, and read back the submitted state before the deadline."
     }
   ],
+  "officialRequirementsReadback": "docs/evidence/official-requirements-readback-20260718.json",
   "completionVerdict": "NOT_COMPLETE",
   "nextGate": "INDEPENDENT_CLAUDE_REVIEW"
 }

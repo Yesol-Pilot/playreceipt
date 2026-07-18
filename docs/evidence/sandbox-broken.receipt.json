@@ -1,0 +1,135 @@
+{
+  "schema": "playreceipt.audit.v1",
+  "receiptId": "df37217018d8623c",
+  "project": "PlayReceipt sandbox (broken)",
+  "checkedAt": "2026-07-18",
+  "sourceKind": "deterministic_sandbox",
+  "verdict": "REPAIR",
+  "counts": {
+    "pass": 4,
+    "repair": 3,
+    "humanReview": 1,
+    "unverified": 0
+  },
+  "balance": {
+    "spreadPp": 8,
+    "strategicEdgePp": -2.2,
+    "bestPolicy": "random",
+    "worstPolicy": "entropy-max",
+    "randomWinrate": 0.312,
+    "bestStrategicWinrate": 0.29
+  },
+  "gates": [
+    {
+      "id": "reliability.runs",
+      "label": "Deterministic sample size",
+      "verdict": "PASS",
+      "observed": 2000,
+      "threshold": ">= 500 deterministic runs",
+      "evidence": [
+        {
+          "gate": "reliability",
+          "path": "sandbox://broken/seed-20260718"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "reliability.crash_free",
+      "label": "Crash and stall freedom",
+      "verdict": "PASS",
+      "observed": {
+        "crashes": 0,
+        "stalls": 0
+      },
+      "threshold": "0 crashes and 0 stalls",
+      "evidence": [
+        {
+          "gate": "reliability",
+          "path": "sandbox://broken/seed-20260718"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "balance.policy_separation",
+      "label": "Policy separation",
+      "verdict": "REPAIR",
+      "observed": "8pp (random → entropy-max)",
+      "threshold": ">= 15pp win-rate spread",
+      "evidence": [
+        {
+          "gate": "balance",
+          "path": "sandbox://broken/policies"
+        }
+      ],
+      "repair": "Tune choices or encounters until player policy creates a measurable outcome difference."
+    },
+    {
+      "id": "balance.strategy_signal",
+      "label": "Strategy beats random play",
+      "verdict": "REPAIR",
+      "observed": "-2.2pp strategic edge",
+      "threshold": ">= 5pp strategic edge over random",
+      "evidence": [
+        {
+          "gate": "balance",
+          "path": "sandbox://broken/policies"
+        }
+      ],
+      "repair": "Repair dominant randomness or weak decision leverage, then rerun identical seeds."
+    },
+    {
+      "id": "accessibility.text",
+      "label": "Minimum gameplay text size",
+      "verdict": "PASS",
+      "observed": "12px",
+      "threshold": ">= 12px at the declared reference viewport",
+      "evidence": [
+        {
+          "gate": "accessibility",
+          "path": "sandbox://broken/ui-contract"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "accessibility.photosensitivity",
+      "label": "Photosensitivity choice before effects",
+      "verdict": "PASS",
+      "observed": true,
+      "threshold": "true before canvas/effects initialization",
+      "evidence": [
+        {
+          "gate": "accessibility",
+          "path": "sandbox://broken/ui-contract"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "accessibility.reduced_motion",
+      "label": "Reduced-motion control",
+      "verdict": "REPAIR",
+      "observed": false,
+      "threshold": "player-visible toggle with outcome parity",
+      "evidence": [
+        {
+          "gate": "accessibility",
+          "path": "sandbox://broken/ui-contract"
+        }
+      ],
+      "repair": "Add a reduced-motion toggle and prove mechanics remain identical."
+    },
+    {
+      "id": "human.fun",
+      "label": "Human fun calibration",
+      "verdict": "HUMAN_REVIEW",
+      "observed": "not completed",
+      "threshold": "at least one recorded human play session",
+      "evidence": [],
+      "repair": "A human must play the build; simulation cannot certify fun."
+    }
+  ],
+  "caveat": "A receipt reports only the supplied evidence. It is not a release approval."
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "playreceipt.verification.v1",
+  "checkedAt": "2026-07-18",
+  "commands": [
+    {
+      "command": "node --test",
+      "exitCode": 0,
+      "tests": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    {
+      "command": "node src/cli.js simulate broken --out docs/evidence/sandbox-broken.receipt.json",
+      "exitCode": 2,
+      "verdict": "REPAIR",
+      "receiptId": "df37217018d8623c"
+    },
+    {
+      "command": "node src/cli.js simulate repaired --out docs/evidence/sandbox-repaired.receipt.json",
+      "exitCode": 4,
+      "verdict": "HUMAN_REVIEW",
+      "receiptId": "dae8291289244f66"
+    },
+    {
+      "command": "node --check src/server.js && node --check api/receipt.js",
+      "exitCode": 0
+    },
+    {
+      "command": "node src/cli.js audit examples/overclock-20260717.json",
+      "exitCode": 2,
+      "verdict": "REPAIR"
+    },
+    {
+      "command": "node src/cli.js simulate repaired",
+      "exitCode": 4,
+      "verdict": "HUMAN_REVIEW"
+    },
+    {
+      "command": "HTTP smoke: /, /app.js, /api/receipt?case=repaired",
+      "exitCode": 0,
+      "responses": [200, 200, 200]
+    }
+  ],
+  "browser": {
+    "desktop": "docs/evidence/browser/playreceipt-desktop.png",
+    "mobile": "docs/evidence/browser/playreceipt-mobile.png",
+    "mobileViewport": { "width": 390, "height": 844 },
+    "horizontalOverflow": false,
+    "caseTransition": {
+      "selected": "Repaired sandbox",
+      "verdict": "HUMAN_REVIEW",
+      "pass": 7,
+      "repair": 0,
+      "humanReview": 1
+    },
+    "consoleErrors": 0
+    ,"minimumCriticalFontPx": 12
+  }
+}

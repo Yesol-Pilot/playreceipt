@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PlayReceipt turns game quality claims into evidence-backed verdicts." />
+    <title>PlayReceipt — Build passed. Game failed.</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="app-shell">
+      <aside class="rail">
+        <a class="brand" href="/" aria-label="PlayReceipt home">
+          <span class="brand-mark" aria-hidden="true">P/R</span>
+          <span><strong>PlayReceipt</strong><small>Evidence, not vibes.</small></span>
+        </a>
+        <nav class="case-switcher" aria-label="Evidence cases">
+          <p>Cases</p>
+          <button data-case="overclock" class="active">
+            <span class="case-index">01</span><span><strong>Original evidence</strong><small>Read-only project snapshot</small></span>
+          </button>
+          <button data-case="broken">
+            <span class="case-index">02</span><span><strong>Broken sandbox</strong><small>Deterministic failure</small></span>
+          </button>
+          <button data-case="repaired">
+            <span class="case-index">03</span><span><strong>Repaired sandbox</strong><small>Machine gates repaired</small></span>
+          </button>
+        </nav>
+        <div class="rail-foot"><span>audit.v1</span><span>8 gates</span></div>
+      </aside>
+
+      <main aria-live="polite">
+        <header class="audit-meta">
+          <div><span>Receipt ID</span><strong id="receipt-id">—</strong></div>
+          <div><span>Source</span><strong id="source-kind">—</strong></div>
+          <div><span>Checked</span><strong id="checked-at">—</strong></div>
+        </header>
+
+        <section class="verdict-zone">
+          <div class="headline">
+            <h1>Build passed. <span>Game failed.</span></h1>
+            <p id="project-name">Loading evidence…</p>
+          </div>
+          <div class="verdict-lockup">
+            <span>Verdict</span>
+            <strong id="verdict">—</strong>
+            <p id="verdict-reason">Evaluating supplied evidence.</p>
+          </div>
+        </section>
+
+        <section class="work-grid">
+          <section class="ledger panel">
+            <div class="panel-head">
+              <div><span>Gate ledger</span><h2>Claims with receipts</h2></div>
+              <div class="counts" aria-label="Gate counts">
+                <span><b id="count-pass">0</b> pass</span>
+                <span><b id="count-repair">0</b> repair</span>
+                <span><b id="count-human">0</b> human</span>
+                <span><b id="count-unverified">0</b> missing</span>
+              </div>
+            </div>
+            <div class="table-head" aria-hidden="true"><span>Gate</span><span>Observed evidence</span><span>Threshold</span><span>Status</span></div>
+            <div id="gate-list" class="gate-list"></div>
+          </section>
+
+          <aside class="side-stack">
+            <section class="panel balance-panel">
+              <div class="panel-head compact"><div><span>Policy signal</span><h2>Does strategy matter?</h2></div><b id="spread-chip">—</b></div>
+              <div id="balance-bars" class="bars"></div>
+            </section>
+            <section class="panel provenance-panel">
+              <div class="panel-head compact"><div><span>Evidence</span><h2>Provenance</h2></div></div>
+              <div id="provenance-list" class="provenance-list"></div>
+            </section>
+            <section class="honesty-panel">
+              <strong>No self-PASS.</strong>
+              <p id="caveat">A receipt reports only supplied evidence.</p>
+            </section>
+          </aside>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

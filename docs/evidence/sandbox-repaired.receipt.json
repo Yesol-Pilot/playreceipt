@@ -1,0 +1,135 @@
+{
+  "schema": "playreceipt.audit.v1",
+  "receiptId": "dae8291289244f66",
+  "project": "PlayReceipt sandbox (repaired)",
+  "checkedAt": "2026-07-18",
+  "sourceKind": "deterministic_sandbox",
+  "verdict": "HUMAN_REVIEW",
+  "counts": {
+    "pass": 7,
+    "repair": 0,
+    "humanReview": 1,
+    "unverified": 0
+  },
+  "balance": {
+    "spreadPp": 20.2,
+    "strategicEdgePp": 20.2,
+    "bestPolicy": "greedy",
+    "worstPolicy": "random",
+    "randomWinrate": 0.234,
+    "bestStrategicWinrate": 0.436
+  },
+  "gates": [
+    {
+      "id": "reliability.runs",
+      "label": "Deterministic sample size",
+      "verdict": "PASS",
+      "observed": 2000,
+      "threshold": ">= 500 deterministic runs",
+      "evidence": [
+        {
+          "gate": "reliability",
+          "path": "sandbox://repaired/seed-20260718"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "reliability.crash_free",
+      "label": "Crash and stall freedom",
+      "verdict": "PASS",
+      "observed": {
+        "crashes": 0,
+        "stalls": 0
+      },
+      "threshold": "0 crashes and 0 stalls",
+      "evidence": [
+        {
+          "gate": "reliability",
+          "path": "sandbox://repaired/seed-20260718"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "balance.policy_separation",
+      "label": "Policy separation",
+      "verdict": "PASS",
+      "observed": "20.2pp (greedy → random)",
+      "threshold": ">= 15pp win-rate spread",
+      "evidence": [
+        {
+          "gate": "balance",
+          "path": "sandbox://repaired/policies"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "balance.strategy_signal",
+      "label": "Strategy beats random play",
+      "verdict": "PASS",
+      "observed": "20.2pp strategic edge",
+      "threshold": ">= 5pp strategic edge over random",
+      "evidence": [
+        {
+          "gate": "balance",
+          "path": "sandbox://repaired/policies"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "accessibility.text",
+      "label": "Minimum gameplay text size",
+      "verdict": "PASS",
+      "observed": "12px",
+      "threshold": ">= 12px at the declared reference viewport",
+      "evidence": [
+        {
+          "gate": "accessibility",
+          "path": "sandbox://repaired/ui-contract"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "accessibility.photosensitivity",
+      "label": "Photosensitivity choice before effects",
+      "verdict": "PASS",
+      "observed": true,
+      "threshold": "true before canvas/effects initialization",
+      "evidence": [
+        {
+          "gate": "accessibility",
+          "path": "sandbox://repaired/ui-contract"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "accessibility.reduced_motion",
+      "label": "Reduced-motion control",
+      "verdict": "PASS",
+      "observed": true,
+      "threshold": "player-visible toggle with outcome parity",
+      "evidence": [
+        {
+          "gate": "accessibility",
+          "path": "sandbox://repaired/ui-contract"
+        }
+      ],
+      "repair": null
+    },
+    {
+      "id": "human.fun",
+      "label": "Human fun calibration",
+      "verdict": "HUMAN_REVIEW",
+      "observed": "not completed",
+      "threshold": "at least one recorded human play session",
+      "evidence": [],
+      "repair": "A human must play the build; simulation cannot certify fun."
+    }
+  ],
+  "caveat": "A receipt reports only the supplied evidence. It is not a release approval."
+}

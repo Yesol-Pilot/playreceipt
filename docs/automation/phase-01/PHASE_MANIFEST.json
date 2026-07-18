@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "2.0.0",
+  "project": "playreceipt",
+  "phase": "P1",
+  "phaseSlug": "PRODUCT_INTENT_AND_BUILDSPEC",
+  "status": "PASS",
+  "requiredArtifacts": ["../../../PRODUCT_INTENT.md", "../../../BUILDSPEC.md", "../../../RUBRIC.md"],
+  "gateEvidence": {
+    "productIntent": "PRODUCT_INTENT.md",
+    "buildSpec": "BUILDSPEC.md",
+    "rubric": "RUBRIC.md",
+    "testSuite": "test/audit.test.js"
+  },
+  "claudeReview": {"required": true, "artifact": "docs/reviews/claude-sonnet-final-review-20260718.md", "verdict": "PASS"},
+  "codexAdjudication": {"artifact": "docs/reviews/codex-adjudication-20260718.md", "verdict": "PASS"},
+  "paidActionsExecuted": false,
+  "productionWritesExecuted": false,
+  "publicWritesExecuted": false,
+  "accountMutationsExecuted": false
+}

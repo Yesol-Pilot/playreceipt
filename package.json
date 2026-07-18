@@ -1,0 +1,19 @@
+{
+  "name": "playreceipt",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Evidence receipts for AI-built games: deterministic checks, balance signals, accessibility gates, and honest verdicts.",
+  "scripts": {
+    "audit": "node src/cli.js audit",
+    "simulate": "node src/cli.js simulate",
+    "simulate:broken": "node src/cli.js simulate broken",
+    "simulate:repaired": "node src/cli.js simulate repaired",
+    "demo": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

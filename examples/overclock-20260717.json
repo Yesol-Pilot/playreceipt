@@ -1,0 +1,42 @@
+{
+  "project": "NEO-GENESIS: OVERCLOCK evidence snapshot",
+  "checkedAt": "2026-07-17",
+  "sourceKind": "real_project_evidence",
+  "metrics": {
+    "reliability": {
+      "runs": 2000,
+      "crashes": 0,
+      "stalls": 0
+    },
+    "balance": {
+      "policyWinrates": [
+        { "policy": "greedy", "winrate": 0.294 },
+        { "policy": "entropy-max", "winrate": 0.24 },
+        { "policy": "safe", "winrate": 0.214 },
+        { "policy": "random", "winrate": 0.296 }
+      ]
+    },
+    "accessibility": {
+      "minFontPx": 12,
+      "photosensitivityPromptBeforeCanvas": true,
+      "reducedMotion": false
+    }
+  },
+  "humanReview": {
+    "funReviewed": false
+  },
+  "evidence": [
+    {
+      "gate": "reliability",
+      "path": "examples/source/overclock/s2-soak-500-20260717.json"
+    },
+    {
+      "gate": "balance",
+      "path": "examples/source/overclock/s2-soak-500-20260717.json"
+    },
+    {
+      "gate": "accessibility",
+      "path": "examples/source/overclock/accessibility-legibility-20260717.md"
+    }
+  ]
+}

@@ -33,7 +33,7 @@ PlayReceipt audits eight explicit gates across reliability, balance, accessibili
 
 The default case uses a real, read-only game evidence snapshot. It completed 2,000 deterministic runs with zero crashes and stalls, but weak strategy separation, missing reduced-motion proof, and no human fun calibration correctly keep it at `REPAIR`. A repaired sandbox passes seven machine-verifiable gates, yet still stops at `HUMAN_REVIEW` because automation cannot certify fun.
 
-Judges can also paste their own evidence JSON into the live app with no account. PlayReceipt returns a copyable and downloadable exact receipt plus an explicit `INGEST → JUDGE → REPAIR PLAN → HUMAN BOUNDARY` trail. Submissions are capped at 64 KiB and are not stored.
+Judges can also paste their own evidence JSON into the live app with no account. PlayReceipt returns a copyable and downloadable exact receipt plus an explicit `INGEST → JUDGE → REPAIR PLAN → HUMAN BOUNDARY` trail. Requests are capped at 64 KiB, and PlayReceipt has no database or submission-history write path.
 
 ## How we built it
 

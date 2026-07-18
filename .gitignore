@@ -2,3 +2,7 @@ node_modules/
 .vercel/
 *.log
 .DS_Store
+docs/demo/playreceipt-uplift-v2.mp4
+docs/demo/playreceipt-uplift-voiceover.wav
+docs/demo/playreceipt-uplift-v2-contact.png
+docs/demo/playreceipt-uplift-v2-frame*.png

@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:10,000
+A green build is not a shippable game. PlayReceipt is an evidence gate for AI-built games.
+
+2
+00:00:10,000 --> 00:00:20,000
+It returns Pass, Repair, Human Review, or Unverified—never one flattering synthetic score.
+
+3
+00:00:20,000 --> 00:00:32,000
+The real snapshot completed 2,000 seeded runs with zero crashes and zero stalls.
+
+4
+00:00:32,000 --> 00:00:45,000
+But weak strategy, missing reduced motion, and no human calibration keep it at Repair.
+
+5
+00:00:45,000 --> 00:00:57,000
+Now the judge can paste a new JSON evidence bundle with no account and issue a receipt.
+
+6
+00:00:57,000 --> 00:01:10,000
+The result is exact, copyable, downloadable, and capped at a Human Review boundary.
+
+7
+00:01:10,000 --> 00:01:20,000
+The trail shows Ingest, Judge, Repair Plan, and where automation must stop.
+
+8
+00:01:20,000 --> 00:01:32,000
+The browser, API, CLI, and GitHub Action all call the same deterministic audit engine.
+
+9
+00:01:32,000 --> 00:01:43,000
+Repair and Unverified fail CI. Human Review stays successful with a visible warning.
+
+10
+00:01:43,000 --> 00:01:54,000
+Ten regression tests cover adapter parity and abuse boundaries with zero runtime dependencies.
+
+11
+00:01:54,000 --> 00:02:05,000
+Codex and GPT-5.6 shaped the product contract, implementation, tests, and browser verification.
+
+12
+00:02:05,000 --> 00:02:11,300
+Try your own evidence, then inspect every claim in the public repository.

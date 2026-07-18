@@ -15,6 +15,7 @@ function gate(id, label, verdict, observed, threshold, evidence, repair = null) 
 }
 
 function policyStats(policyWinrates = []) {
+  if (!Array.isArray(policyWinrates)) return null;
   const valid = policyWinrates.filter(
     (entry) => entry
       && typeof entry.policy === "string"
@@ -68,7 +69,9 @@ export function auditGameEvidence(input) {
   const reliability = input.metrics?.reliability ?? {};
   const accessibility = input.metrics?.accessibility ?? {};
   const balance = policyStats(input.metrics?.balance?.policyWinrates);
-  const evidence = Array.isArray(input.evidence) ? input.evidence : [];
+  const evidence = Array.isArray(input.evidence)
+    ? input.evidence.filter((item) => item && typeof item === "object")
+    : [];
   const gates = [];
 
   const runsSupplied = Number.isInteger(reliability.runs) && reliability.runs >= 0;

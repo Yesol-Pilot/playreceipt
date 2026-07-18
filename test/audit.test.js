@@ -55,4 +55,11 @@ test("missing evidence is UNVERIFIED, never PASS", () => {
   });
   assert.equal(invalidRanges.gates.find((gate) => gate.id === "balance.policy_separation").verdict, "UNVERIFIED");
   assert.equal(invalidRanges.gates.find((gate) => gate.id === "accessibility.text").verdict, "UNVERIFIED");
+
+  const wrongShapes = auditGameEvidence({
+    project: "wrong-shapes",
+    metrics: { balance: { policyWinrates: {} } },
+    evidence: [null, "not-an-evidence-record"],
+  });
+  assert.equal(wrongShapes.gates.find((gate) => gate.id === "balance.policy_separation").verdict, "UNVERIFIED");
 });

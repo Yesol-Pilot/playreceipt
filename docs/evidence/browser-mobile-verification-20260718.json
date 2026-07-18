@@ -38,6 +38,15 @@
     "sha256": "a8fcd8e2251cd2bbc731caf8293a277e1e6b3f276276680b815782b17a976f4b",
     "visuallyInspectedInThreeFullWidthCrops": true
   },
+  "presentationAsset": {
+    "path": "docs/demo/playreceipt-uplift-mobile-card-1280.png",
+    "width": 1280,
+    "height": 720,
+    "sizeBytes": 322212,
+    "sha256": "f1543ef4e7cb609316c512ace6f183f2ae1c182356eec7dd2c4830df7fc501cd",
+    "visuallyInspected": true,
+    "purpose": "Devpost-safe 16:9 presentation of the underlying 390px proof; does not replace the raw full-page evidence."
+  },
   "incident": {
     "finding": "The prior committed mobile artifact rendered a stale pre-responsive capture as a narrow strip and did not prove the 390px claim.",
     "repair": "Reject the stale artifact, recapture the current custom-audit flow at a true 390px viewport, and bind the viewport and favicon contracts in the HTTP regression test.",

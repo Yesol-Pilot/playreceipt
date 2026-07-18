@@ -55,7 +55,7 @@ The first two paragraphs visible to judges must preserve this sequence:
 | 2 | `docs/evidence/browser/playreceipt-uplift-dialog.png` | Paste judge-supplied evidence. No account, no upload history. |
 | 3 | `docs/demo/playreceipt-uplift-gallery-1280.png` | Exact receipt plus the ingest-to-human-boundary trail. |
 | 4 | `docs/demo/playreceipt-uplift-ci.png` | One deterministic engine across browser, API, CLI, and GitHub Action. |
-| 5 | `docs/evidence/browser/playreceipt-uplift-mobile.png` | The complete evidence ledger remains usable at 390px. |
+| 5 | `docs/demo/playreceipt-uplift-mobile-card-1280.png` | True 390px readback: all eight gates retained, no horizontal overflow, zero console errors. |
 
 ## Save and submission readback
 

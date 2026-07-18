@@ -49,6 +49,17 @@
     .gallery-stage span { display:block; margin-top:6px; color:#d7e0e3; font-size:16px; }
     .gallery-shot { align-self:center; height:610px; overflow:hidden; border:1px solid #40545c; box-shadow:0 30px 80px #0009; background:#081013; }
     .gallery-shot img { width:100%; height:auto; display:block; transform:translateY(-8px); }
+    #mobile { display:none; padding:50px 68px; }
+    #mobile:target { display:grid; grid-template-columns:49% 51%; gap:54px; }
+    .mobile-copy { align-self:center; }
+    .mobile-copy h1 { margin-top:22px; font-size:64px; line-height:.94; }
+    .mobile-copy p { max-width:530px; color:#a8b8be; font-size:21px; line-height:1.4; }
+    .mobile-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:30px; }
+    .mobile-stat { border-top:2px solid #e6ff47; background:#102027; padding:15px; }
+    .mobile-stat strong { display:block; color:#f6f1e7; font-size:27px; }
+    .mobile-stat span { display:block; margin-top:5px; color:#9aaeb6; font:12px Consolas,monospace; text-transform:uppercase; }
+    .mobile-device { align-self:center; justify-self:end; width:350px; height:620px; padding:10px; overflow:hidden; border:1px solid #53676f; border-radius:24px; background:#05090b; box-shadow:0 32px 90px #000b; }
+    .mobile-device img { width:100%; height:auto; display:block; border-radius:15px; }
   </style>
 </head>
 <body>
@@ -105,6 +116,20 @@
       </div>
     </div>
     <div class="gallery-shot"><img src="../evidence/browser/playreceipt-uplift-custom.png" alt="PlayReceipt custom evidence receipt"></div>
+  </section>
+
+  <section id="mobile" class="scene">
+    <div class="mobile-copy">
+      <div class="eyebrow">True 390px browser readback</div>
+      <h1>The audit fits.<br><span class="accent">The evidence stays.</span></h1>
+      <p>The same judge-supplied receipt keeps all eight gates, provenance, and the human boundary—without hiding columns or escaping the viewport.</p>
+      <div class="mobile-stats">
+        <div class="mobile-stat"><strong>390 = 390</strong><span>viewport / document</span></div>
+        <div class="mobile-stat"><strong>8 / 8</strong><span>gates retained</span></div>
+        <div class="mobile-stat"><strong>0</strong><span>console errors</span></div>
+      </div>
+    </div>
+    <div class="mobile-device"><img src="../evidence/browser/playreceipt-uplift-mobile.png" alt="PlayReceipt custom audit at a 390 pixel viewport"></div>
   </section>
 </body>
 </html>

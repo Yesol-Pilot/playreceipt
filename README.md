@@ -4,6 +4,8 @@
 
 PlayReceipt is an evidence gate for AI-built games. It converts reliability, balance, accessibility, and human-play evidence into stable receipts with four honest outcomes: `PASS`, `REPAIR`, `HUMAN_REVIEW`, or `UNVERIFIED`.
 
+**Live demo:** [playreceipt.vercel.app](https://playreceipt.vercel.app)
+
 ![PlayReceipt desktop audit](docs/evidence/browser/playreceipt-desktop.png)
 
 ## Why it exists
@@ -67,6 +69,7 @@ PlayReceipt is new work created for OpenAI Build Week in the Developer Tools tra
 - Judging strategy: [RUBRIC.md](RUBRIC.md)
 - Architecture decision and source boundary: [DECISION_RECORD.md](DECISION_RECORD.md)
 - Deterministic receipts: [`docs/evidence/`](docs/evidence/)
+- Live deployment receipt: [`docs/evidence/deployment-20260718.json`](docs/evidence/deployment-20260718.json)
 
 Built with Codex and GPT-5.6. The required submission feedback field will contain the public Codex Session ID used to build and verify this repository.
 

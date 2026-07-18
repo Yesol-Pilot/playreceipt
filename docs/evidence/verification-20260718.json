@@ -53,7 +53,8 @@
       "repair": 0,
       "humanReview": 1
     },
-    "consoleErrors": 0
-    ,"minimumCriticalFontPx": 12
+    "consoleErrors": 0,
+    "minimumCriticalFontPx": 12,
+    "liveScreenshot": "docs/evidence/browser/playreceipt-live.png"
   }
 }

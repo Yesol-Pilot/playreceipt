@@ -1,0 +1,34 @@
+{
+  "schema": "playreceipt.deployment.v1",
+  "deployedAt": "2026-07-18",
+  "provider": "Vercel",
+  "project": "playreceipt",
+  "team": "etribe-cts-projects",
+  "url": "https://playreceipt.vercel.app",
+  "sourceRepository": "https://github.com/Yesol-Pilot/playreceipt",
+  "sourceCommit": "fb8172fa4401872bfbd9e872507632b6d621437e",
+  "dashboardReadback": "Congratulations! You just deployed a new project.",
+  "liveReadback": {
+    "defaultCase": {
+      "project": "NEO-GENESIS: OVERCLOCK evidence snapshot",
+      "receiptId": "3d0c9c78cfd46954",
+      "verdict": "REPAIR",
+      "pass": 4,
+      "repair": 3,
+      "humanReview": 1,
+      "unverified": 0
+    },
+    "repairedCase": {
+      "project": "PlayReceipt sandbox (repaired)",
+      "receiptId": "dae8291289244f66",
+      "verdict": "HUMAN_REVIEW",
+      "pass": 7,
+      "repair": 0,
+      "humanReview": 1,
+      "unverified": 0
+    }
+  },
+  "browserEvidence": "docs/evidence/browser/playreceipt-live.png",
+  "applicationConsoleErrors": 0,
+  "note": "Chrome extension warnings were excluded because their source URL was chrome-extension://, not the deployed application."
+}

@@ -16,7 +16,11 @@ function gate(id, label, verdict, observed, threshold, evidence, repair = null) 
 
 function policyStats(policyWinrates = []) {
   const valid = policyWinrates.filter(
-    (entry) => entry && typeof entry.policy === "string" && Number.isFinite(entry.winrate),
+    (entry) => entry
+      && typeof entry.policy === "string"
+      && Number.isFinite(entry.winrate)
+      && entry.winrate >= 0
+      && entry.winrate <= 1,
   );
   if (valid.length < 2) return null;
 
@@ -67,26 +71,38 @@ export function auditGameEvidence(input) {
   const evidence = Array.isArray(input.evidence) ? input.evidence : [];
   const gates = [];
 
-  const runsVerified = Number.isInteger(reliability.runs) && reliability.runs >= 500;
+  const runsSupplied = Number.isInteger(reliability.runs) && reliability.runs >= 0;
+  const runsPass = runsSupplied && reliability.runs >= 500;
   gates.push(gate(
     "reliability.runs",
     "Deterministic sample size",
-    runsVerified ? PASS : UNVERIFIED,
-    Number.isFinite(reliability.runs) ? reliability.runs : "missing",
+    !runsSupplied ? UNVERIFIED : runsPass ? PASS : REPAIR,
+    runsSupplied ? reliability.runs : "missing",
     ">= 500 deterministic runs",
     evidence.filter((item) => item.gate === "reliability"),
-    runsVerified ? null : "Run at least 500 seeded simulations and attach the raw output.",
+    runsPass ? null : "Run at least 500 seeded simulations and attach the raw output.",
   ));
 
-  const crashFree = runsVerified && reliability.crashes === 0 && reliability.stalls === 0;
+  const crashCountsSupplied = Number.isInteger(reliability.crashes)
+    && reliability.crashes >= 0
+    && Number.isInteger(reliability.stalls)
+    && reliability.stalls >= 0;
+  const crashFree = crashCountsSupplied && reliability.crashes === 0 && reliability.stalls === 0;
   gates.push(gate(
     "reliability.crash_free",
     "Crash and stall freedom",
-    !runsVerified ? UNVERIFIED : crashFree ? PASS : REPAIR,
-    { crashes: reliability.crashes ?? "missing", stalls: reliability.stalls ?? "missing" },
+    !runsPass || !crashCountsSupplied ? UNVERIFIED : crashFree ? PASS : REPAIR,
+    {
+      crashes: Number.isInteger(reliability.crashes) && reliability.crashes >= 0 ? reliability.crashes : "missing",
+      stalls: Number.isInteger(reliability.stalls) && reliability.stalls >= 0 ? reliability.stalls : "missing",
+    },
     "0 crashes and 0 stalls",
     evidence.filter((item) => item.gate === "reliability"),
-    crashFree ? null : "Fix deterministic crash/stall paths and rerun the same seeds.",
+    crashFree
+      ? null
+      : !runsPass || !crashCountsSupplied
+        ? "Provide at least 500 seeded runs with non-negative crash and stall counts."
+        : "Fix deterministic crash/stall paths and rerun the same seeds.",
   ));
 
   if (!balance) {
@@ -133,14 +149,15 @@ export function auditGameEvidence(input) {
   }
 
   const minFontPx = accessibility.minFontPx;
+  const minFontSupplied = Number.isFinite(minFontPx) && minFontPx >= 0;
   gates.push(gate(
     "accessibility.text",
     "Minimum gameplay text size",
-    !Number.isFinite(minFontPx) ? UNVERIFIED : minFontPx >= 12 ? PASS : REPAIR,
-    Number.isFinite(minFontPx) ? `${minFontPx}px` : "missing",
+    !minFontSupplied ? UNVERIFIED : minFontPx >= 12 ? PASS : REPAIR,
+    minFontSupplied ? `${minFontPx}px` : "missing",
     ">= 12px at the declared reference viewport",
     evidence.filter((item) => item.gate === "accessibility"),
-    Number.isFinite(minFontPx) && minFontPx >= 12 ? null : "Raise gameplay text and capture the reference viewport again.",
+    minFontSupplied && minFontPx >= 12 ? null : "Raise gameplay text and capture the reference viewport again.",
   ));
 
   const prompt = accessibility.photosensitivityPromptBeforeCanvas;

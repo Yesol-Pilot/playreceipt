@@ -32,4 +32,27 @@ test("missing evidence is UNVERIFIED, never PASS", () => {
   const receipt = auditGameEvidence({ project: "empty", metrics: {} });
   assert.equal(receipt.verdict, "UNVERIFIED");
   assert.ok(receipt.counts.unverified > 0);
+
+  const insufficient = auditGameEvidence({
+    project: "short-run",
+    metrics: { reliability: { runs: 499, crashes: 0, stalls: 0 } },
+  });
+  assert.equal(insufficient.gates.find((gate) => gate.id === "reliability.runs").verdict, "REPAIR");
+  assert.equal(insufficient.gates.find((gate) => gate.id === "reliability.crash_free").verdict, "UNVERIFIED");
+
+  const missingCounts = auditGameEvidence({
+    project: "missing-counts",
+    metrics: { reliability: { runs: 500 } },
+  });
+  assert.equal(missingCounts.gates.find((gate) => gate.id === "reliability.crash_free").verdict, "UNVERIFIED");
+
+  const invalidRanges = auditGameEvidence({
+    project: "invalid-ranges",
+    metrics: {
+      balance: { policyWinrates: [{ policy: "random", winrate: -1 }, { policy: "strategy", winrate: 2 }] },
+      accessibility: { minFontPx: -1 },
+    },
+  });
+  assert.equal(invalidRanges.gates.find((gate) => gate.id === "balance.policy_separation").verdict, "UNVERIFIED");
+  assert.equal(invalidRanges.gates.find((gate) => gate.id === "accessibility.text").verdict, "UNVERIFIED");
 });

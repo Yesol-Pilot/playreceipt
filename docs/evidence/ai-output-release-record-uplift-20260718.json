@@ -28,7 +28,7 @@
     "review_route": "AGENT_FINAL_VALIDATOR_PLUS_INDEPENDENT_CLAUDE_GATE",
     "external_human_action_required": false,
     "external_human_action_basis": "No real-person, regulated, or high-impact claim; contest rules require truthful Codex provenance rather than human-only approval.",
-    "reviewed_at": "2026-07-18T14:05:00+09:00",
+    "reviewed_at": "2026-07-18T14:58:00+09:00",
     "material_edits_or_acceptance_rationale": [
       "Added credential-free 64 KiB JSON audit with no submission history.",
       "Added copy/download receipt handoff and visible audit trail.",
@@ -38,7 +38,9 @@
       "docs/evidence/browser/playreceipt-uplift-dialog.png",
       "docs/evidence/browser/playreceipt-uplift-custom.png",
       "docs/evidence/browser/playreceipt-uplift-mobile.png",
-      "npm test: 10/10 PASS"
+      "npm test: 11/11 PASS",
+      "docs/evidence/runtime-matrix-verification-20260718.json",
+      "docs/evidence/video-uplift-candidate-20260718.json"
     ]
   },
   "facts_rights_and_consent": {
@@ -74,15 +76,24 @@
       "loading and error states",
       "mobile overflow check at 390px",
       "deterministic tests",
+      "Windows Node 20 and Linux runtime verification",
+      "131.39-second 1080p video QA",
       "truthful human-review boundary"
     ],
     "render_playback_device_or_runtime_evidence": [
       "desktop custom-audit screenshot",
       "mobile full-page screenshot",
-      "copied-state=1 browser interaction readback"
+      "copied-state=1 browser interaction readback",
+      "11/11 tests on official Node v20.20.2 and Linux",
+      "video candidate black/silence scan, volume scan, contact-sheet inspection, and SHA-256 receipt"
     ],
     "independent_review_evidence": [],
-    "remaining_defects": ["Independent Claude re-review pending after weekly limit resets at 20:00 KST."]
+    "remaining_defects": [
+      "Independent Claude re-review pending after weekly limit resets at 20:00 KST.",
+      "Uplift commit range is not yet pushed to public main.",
+      "V3 video is not yet uploaded and live-read back on YouTube.",
+      "Devpost still references the preserved original video until v3 passes public playback verification."
+    ]
   },
   "verdict": "UNVERIFIED"
 }

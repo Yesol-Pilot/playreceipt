@@ -9,13 +9,17 @@
     "../../../src/action.js",
     "../../../action.yml",
     "../../../public/index.html",
-    "../../../public/app.js"
+    "../../../public/app.js",
+    "../../../public/schema/game-evidence.schema.json"
   ],
   "gateEvidence": {
     "sharedAuditEngine": "src/audit.js",
     "browserAndApi": ["public/app.js", "src/http.js", "api/receipt.js"],
     "githubAction": ["action.yml", "src/action.js", ".github/workflows/playreceipt.yml"],
     "testSuite": ["test/audit.test.js", "test/http.test.js", "test/api-handler.test.js", "test/action.test.js"],
+    "actionReadback": "docs/evidence/action-local-20260718.json",
+    "runtimeMatrix": "docs/evidence/runtime-matrix-verification-20260718.json",
+    "videoCandidate": "docs/evidence/video-uplift-candidate-20260718.json",
     "browserReadback": [
       "docs/evidence/browser/playreceipt-uplift-dialog.png",
       "docs/evidence/browser/playreceipt-uplift-custom.png",

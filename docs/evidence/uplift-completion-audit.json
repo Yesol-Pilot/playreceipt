@@ -1,0 +1,88 @@
+{
+  "schema": "playreceipt.completion-audit.v1",
+  "objective": "Add a real Codex audit-repair-reaudit workflow and reusable evidence across product, tests, video, and Devpost; revalidate and resubmit before deadline.",
+  "auditedAt": "2026-07-18T14:58:00+09:00",
+  "auditedBaseHead": "3c29eaf810226c9bde961cea9e21e2f0aaf76073",
+  "auditArtifactIncludedInNextCommit": true,
+  "publicMainBeforeUplift": "275945b0a83391696d5fbb3fe28613e2abb4afe0",
+  "requirements": [
+    {
+      "id": "interactive-product",
+      "status": "PROVEN_LOCAL",
+      "evidence": [
+        "public/index.html",
+        "public/app.js",
+        "src/request.js",
+        "docs/evidence/browser/playreceipt-uplift-dialog.png",
+        "docs/evidence/browser/playreceipt-uplift-custom.png",
+        "docs/evidence/browser/playreceipt-uplift-mobile.png"
+      ],
+      "remaining": "Public Vercel readback after main push."
+    },
+    {
+      "id": "codex-audit-repair-reaudit",
+      "status": "PROVEN_LOCAL",
+      "evidence": [
+        "src/audit.js repairPlan and trail",
+        ".codex/skills/playreceipt/SKILL.md",
+        "docs/evidence/action-local-20260718.json",
+        "test/audit.test.js",
+        "test/action.test.js"
+      ],
+      "remaining": "GitHub-hosted Action run after push."
+    },
+    {
+      "id": "reusable-evidence-contract",
+      "status": "PROVEN_LOCAL",
+      "evidence": [
+        "public/schema/game-evidence.schema.json",
+        "action.yml",
+        "api/receipt.js",
+        "docs/evidence/runtime-matrix-verification-20260718.json"
+      ],
+      "remaining": "Public schema and POST parity readback after deploy."
+    },
+    {
+      "id": "regression-and-portability",
+      "status": "PROVEN_LOCAL",
+      "evidence": [
+        "11/11 Windows current-runtime tests",
+        "11/11 official Node v20.20.2 tests",
+        "11/11 Linux WSL tests",
+        "docs/evidence/runtime-matrix-verification-20260718.json"
+      ],
+      "remaining": "GitHub-hosted Linux run."
+    },
+    {
+      "id": "improved-video",
+      "status": "READY_FOR_INDEPENDENT_REVIEW",
+      "evidence": [
+        "docs/demo/playreceipt-uplift-v3.mp4",
+        "docs/evidence/video-uplift-candidate-20260718.json",
+        "docs/demo/playreceipt-uplift-v3-thumbnail-1280.png",
+        "docs/demo/YOUTUBE_V3_UPLOAD.md"
+      ],
+      "remaining": "Independent review, public upload, 1080p/audio/metadata readback, and public URL receipt."
+    },
+    {
+      "id": "independent-review",
+      "status": "PENDING_EXTERNAL_STATE",
+      "evidence": ["docs/reviews/claude-sonnet-uplift-review-prompt.md"],
+      "remaining": "Run after Claude weekly limit resets at 20:00 KST; repair and re-review if needed."
+    },
+    {
+      "id": "public-main-and-live-deploy",
+      "status": "PENDING",
+      "evidence": [],
+      "remaining": "Push reviewed commits, wait for GitHub Actions and Vercel, then verify live GET/POST/schema/browser."
+    },
+    {
+      "id": "devpost-resubmission",
+      "status": "PENDING",
+      "evidence": ["docs/demo/DEVPOST_SUBMISSION.md"],
+      "remaining": "Replace video URL and copy, save/submit, and read back the submitted state before the deadline."
+    }
+  ],
+  "completionVerdict": "NOT_COMPLETE",
+  "nextGate": "INDEPENDENT_CLAUDE_REVIEW"
+}

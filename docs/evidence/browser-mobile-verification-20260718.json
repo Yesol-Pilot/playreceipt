@@ -1,0 +1,48 @@
+{
+  "schema": "playreceipt.browser-mobile-verification.v1",
+  "checkedAt": "2026-07-18T16:25:48+09:00",
+  "head": "87c402a3166b7cddbd9241b5f3bbdf715e6b4101",
+  "runtime": "HeadlessChrome/150.0.0.0 on Linux x86_64 via Playwright CLI",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "horizontalOverflowPixels": 0
+  },
+  "defaultCase": {
+    "receiptId": "3d0c9c78cfd46954",
+    "verdict": "REPAIR",
+    "counts": { "pass": 4, "repair": 3, "humanReview": 1, "unverified": 0 }
+  },
+  "customAudit": {
+    "path": "Open Audit your evidence, keep the seeded JSON, select Issue receipt",
+    "httpStatus": 200,
+    "receiptId": "1566758e754f4695",
+    "verdict": "HUMAN_REVIEW",
+    "counts": { "pass": 7, "repair": 0, "humanReview": 1, "unverified": 0 },
+    "trail": ["INGEST", "JUDGE", "REPAIR PLAN", "HUMAN BOUNDARY"],
+    "copyControlExecuted": true
+  },
+  "browserReadback": {
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "allEightGatesPresent": true,
+    "provenancePresent": true,
+    "humanBoundaryPresent": true
+  },
+  "screenshot": {
+    "path": "docs/evidence/browser/playreceipt-uplift-mobile.png",
+    "width": 390,
+    "height": 2718,
+    "sha256": "a8fcd8e2251cd2bbc731caf8293a277e1e6b3f276276680b815782b17a976f4b",
+    "visuallyInspectedInThreeFullWidthCrops": true
+  },
+  "incident": {
+    "finding": "The prior committed mobile artifact rendered a stale pre-responsive capture as a narrow strip and did not prove the 390px claim.",
+    "repair": "Reject the stale artifact, recapture the current custom-audit flow at a true 390px viewport, and bind the viewport and favicon contracts in the HTTP regression test.",
+    "staleServerPidVerifiedAndStopped": 33708,
+    "currentServerRevalidated": true
+  },
+  "verdict": "PASS_LOCAL"
+}

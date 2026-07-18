@@ -1,7 +1,7 @@
 {
   "schema": "playreceipt.pre-review-hardening.v1",
-  "auditedAt": "2026-07-18T15:32:08+09:00",
-  "head": "f3824126004485c9ddb8f6f6b93ad7493bd004e2",
+  "auditedAt": "2026-07-18T16:25:48+09:00",
+  "head": "87c402a3166b7cddbd9241b5f3bbdf715e6b4101",
   "repairs": [
     {
       "commit": "b664d00",
@@ -47,6 +47,11 @@
       "commit": "f382412",
       "finding": "Browser case loading could remain dimmed and unusable after a network failure.",
       "repair": "Loading cleanup is unconditional and the custom audit remains usable when its sample request fails."
+    },
+    {
+      "commit": "87c402a",
+      "finding": "The prior mobile gallery artifact was a stale narrow-strip capture and did not prove its 390px usability claim.",
+      "repair": "A real 390px Playwright flow now proves zero horizontal overflow, custom POST parity, all eight gates, the four-stage trail, copy execution, and zero console errors."
     }
   ],
   "verification": {

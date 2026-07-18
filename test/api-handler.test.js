@@ -15,7 +15,7 @@ function responseRecorder() {
   };
 }
 
-test("Vercel POST adapter shares the audit engine and rejects non-JSON", async () => {
+test("Vercel adapter shares the audit engine and enforces its HTTP contract", async () => {
   const success = responseRecorder();
   await handler({ method: "POST", headers: { "content-type": "Application/JSON; Charset=UTF-8" }, body: repaired }, success);
   assert.equal(success.statusCode, 200);
@@ -26,4 +26,26 @@ test("Vercel POST adapter shares the audit engine and rejects non-JSON", async (
   await handler({ method: "POST", headers: { "content-type": "text/plain" }, body: repaired }, wrongType);
   assert.equal(wrongType.statusCode, 415);
   assert.match(wrongType.body.error, /application\/json/);
+
+  const oversized = responseRecorder();
+  await handler({
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: { project: "oversized", padding: "x".repeat(70 * 1024) },
+  }, oversized);
+  assert.equal(oversized.statusCode, 413);
+
+  const get = responseRecorder();
+  await handler({ method: "GET", headers: {}, query: { case: "repaired" } }, get);
+  assert.equal(get.statusCode, 200);
+  assert.equal(get.body.verdict, "HUMAN_REVIEW");
+
+  const unknown = responseRecorder();
+  await handler({ method: "GET", headers: {}, query: { case: "unknown" } }, unknown);
+  assert.equal(unknown.statusCode, 404);
+
+  const disallowed = responseRecorder();
+  await handler({ method: "DELETE", headers: {}, query: {} }, disallowed);
+  assert.equal(disallowed.statusCode, 405);
+  assert.equal(disallowed.headers.allow, "GET, POST");
 });

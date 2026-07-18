@@ -10,7 +10,7 @@ This repository is new work created during OpenAI Build Week. It uses one read-o
 - CLI commands for a supplied evidence file and deterministic `broken` / `repaired` simulations.
 - Eight explicit gates across reliability, balance, accessibility, and human review.
 - Stable SHA-256 receipt IDs for identical evidence and rules.
-- Three inspectable cases: real project evidence, broken sandbox, repaired sandbox.
+- Three bundled inspectable cases—real project evidence, broken sandbox, and repaired sandbox—plus a fourth judge-supplied live audit path.
 - No hidden network dependency for the audit engine or dashboard data.
 - Credential-free **Audit your evidence** workflow accepting a game-evidence JSON document up to 64 KiB.
 - Copyable and downloadable JSON receipt produced from the exact audited input.

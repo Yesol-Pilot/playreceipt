@@ -38,6 +38,6 @@ The product makes a precise distinction most automated evaluators blur: reliabil
 | Same input means same result | automated receipt-ID stability test |
 | Human judgment is not fabricated | repaired case ends at `HUMAN_REVIEW` |
 | New Build Week work is separable | git history and this repository boundary |
-| Judges can audit their own evidence | credential-free POST flow, downloadable receipt, and full-receipt deep-equality tests across HTTP, Vercel API, CLI, and Action adapters |
+| Judges can audit their own evidence | credential-free POST flow, downloadable receipt, full-receipt deep-equality tests across HTTP/Vercel/CLI/Action, and an Action run from an external consumer workspace |
 | The verdict can govern CI | root `action.yml`, action runner test, executable workflow, and `docs/evidence/action-local-20260718.json` |
 | Codex use changes the workflow | repository skill plus visible repair trail and exact session evidence |

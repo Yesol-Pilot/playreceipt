@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { auditGameEvidence } from "../src/audit.js";
@@ -12,12 +13,15 @@ test("GitHub Action exposes a stable human-review receipt without failing CI", a
   context.after(() => rm(directory, { recursive: true, force: true }));
   const output = join(directory, "output.txt");
   const summary = join(directory, "summary.md");
-  const run = spawnSync(process.execPath, ["src/action.js"], {
-    cwd: new URL("..", import.meta.url),
+  const evidence = join(directory, "evidence.json");
+  await writeFile(evidence, JSON.stringify(repaired), "utf8");
+  const action = fileURLToPath(new URL("../src/action.js", import.meta.url));
+  const run = spawnSync(process.execPath, [action], {
+    cwd: directory,
     encoding: "utf8",
     env: {
       ...process.env,
-      INPUT_EVIDENCE: "examples/repaired-evidence.json",
+      INPUT_EVIDENCE: "evidence.json",
       GITHUB_OUTPUT: output,
       GITHUB_STEP_SUMMARY: summary,
     },

@@ -14,4 +14,4 @@ jobs:
         uses: ./
         with:
           evidence: examples/repaired-evidence.json
-      - run: echo "${{ steps.receipt.outputs.verdict }} / ${{ steps.receipt.outputs.receipt-id }}"
+      - run: echo "${{ steps.receipt.outputs.verdict }} / ${{ steps.receipt.outputs['receipt-id'] }}"

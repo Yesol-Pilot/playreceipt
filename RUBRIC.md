@@ -39,5 +39,5 @@ The product makes a precise distinction most automated evaluators blur: reliabil
 | Human judgment is not fabricated | repaired case ends at `HUMAN_REVIEW` |
 | New Build Week work is separable | git history and this repository boundary |
 | Judges can audit their own evidence | credential-free POST flow and downloadable receipt |
-| The verdict can govern CI | root `action.yml`, action runner test, and GitHub workflow |
+| The verdict can govern CI | root `action.yml`, action runner test, executable workflow, and `docs/evidence/action-local-20260718.json` |
 | Codex use changes the workflow | repository skill plus visible repair trail and exact session evidence |

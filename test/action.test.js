@@ -37,3 +37,9 @@ test("GitHub Action blocks repair evidence and emits actionable annotations", ()
   assert.match(run.stdout, /::error::/);
   assert.match(run.stdout, /PlayReceipt REPAIR/);
 });
+
+test("bundled workflow safely reads the hyphenated receipt-id output", async () => {
+  const workflow = await readFile(new URL("../.github/workflows/playreceipt.yml", import.meta.url), "utf8");
+  assert.match(workflow, /outputs\['receipt-id'\]/);
+  assert.doesNotMatch(workflow, /outputs\.receipt-id/);
+});

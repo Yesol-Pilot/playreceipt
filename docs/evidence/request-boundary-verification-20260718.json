@@ -10,7 +10,7 @@
     "rejectedExample": "text/plain; note=application/json",
     "maximumBytes": 65536,
     "sizeEnforcement": [
-      "Content-Length is rejected before Vercel body handling when it exceeds the cap",
+      "Inside the Vercel handler, Content-Length is rejected before PlayReceipt reserializes or audits the parsed body; Vercel may already have received and parsed the request and separately enforces its own 4.5 MB platform limit",
       "the serialized parsed payload is independently rejected when it exceeds the cap",
       "the local Node adapter counts streamed request bytes before parsing"
     ],

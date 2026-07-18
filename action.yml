@@ -13,5 +13,5 @@ outputs:
   receipt-id:
     description: Stable SHA-256-derived receipt identifier.
 runs:
-  using: node20
+  using: node24
   main: src/action.js

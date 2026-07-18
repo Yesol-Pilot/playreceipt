@@ -2,6 +2,8 @@
   "schema": "playreceipt.action-evidence.v1",
   "checkedAt": "2026-07-18T14:24:00+09:00",
   "runner": "local Node.js action entrypoint",
+  "runtimeDeclared": "node24",
+  "hostedRunnerBoundary": "This record proves the local action entrypoint only. A GitHub-hosted ubuntu-latest run remains pending until the independently reviewed commit is pushed.",
   "action": "action.yml -> src/action.js -> src/audit.js",
   "cases": [
     {

@@ -131,7 +131,7 @@ PlayReceipt is new work created for OpenAI Build Week in the Developer Tools tra
 - Windows Node 20 + Linux runtime matrix: [`docs/evidence/runtime-matrix-verification-20260718.json`](docs/evidence/runtime-matrix-verification-20260718.json)
 - Live deployment receipt: [`docs/evidence/deployment-20260718.json`](docs/evidence/deployment-20260718.json)
 - Public video receipt: [`docs/evidence/video-20260718.json`](docs/evidence/video-20260718.json)
-- Versioned 1080p uplift-video candidate receipt: [`docs/evidence/video-uplift-candidate-20260718.json`](docs/evidence/video-uplift-candidate-20260718.json)
+- Versioned 1080p uplift-video candidate receipt: [`docs/evidence/video-uplift-v4-candidate-20260718.json`](docs/evidence/video-uplift-v4-candidate-20260718.json)
 - Devpost submission receipt: [`docs/evidence/devpost-submission-20260718.json`](docs/evidence/devpost-submission-20260718.json)
 
 Built with Codex and GPT-5.6. The required submission feedback field will contain the public Codex Session ID used to build and verify this repository.

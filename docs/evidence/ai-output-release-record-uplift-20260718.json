@@ -30,7 +30,7 @@
     "external_human_action_basis": "No real-person, regulated, or high-impact claim; contest rules require truthful Codex provenance rather than human-only approval.",
     "reviewed_at": "2026-07-18T14:58:00+09:00",
     "material_edits_or_acceptance_rationale": [
-      "Added credential-free 64 KiB JSON audit with no submission history.",
+      "Added credential-free 64 KiB JSON audit with no PlayReceipt database or submission-history write path.",
       "Added copy/download receipt handoff and visible audit trail.",
       "Added dependency-free GitHub Action sharing the same audit engine."
     ],
@@ -40,7 +40,7 @@
       "docs/evidence/browser/playreceipt-uplift-mobile.png",
       "npm test: 11/11 PASS",
       "docs/evidence/runtime-matrix-verification-20260718.json",
-      "docs/evidence/video-uplift-candidate-20260718.json"
+      "docs/evidence/video-uplift-v4-candidate-20260718.json"
     ]
   },
   "facts_rights_and_consent": {
@@ -77,7 +77,7 @@
       "mobile overflow check at 390px",
       "deterministic tests",
       "Windows Node 20 and Linux runtime verification",
-      "131.39-second 1080p video QA",
+      "131.37-second 1080p video QA",
       "truthful human-review boundary"
     ],
     "render_playback_device_or_runtime_evidence": [
@@ -91,8 +91,8 @@
     "remaining_defects": [
       "Independent Claude re-review pending after weekly limit resets at 20:00 KST.",
       "Uplift commit range is not yet pushed to public main.",
-      "V3 video is not yet uploaded and live-read back on YouTube.",
-      "Devpost still references the preserved original video until v3 passes public playback verification."
+      "V4 video is not yet uploaded and live-read back on YouTube.",
+      "Devpost still references the preserved original video until v4 passes public playback verification."
     ]
   },
   "verdict": "UNVERIFIED"

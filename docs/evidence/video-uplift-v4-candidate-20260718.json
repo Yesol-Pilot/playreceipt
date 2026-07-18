@@ -1,0 +1,60 @@
+{
+  "schema": "playreceipt.video-candidate.v1",
+  "checkedAt": "2026-07-18T17:49:18+09:00",
+  "candidate": {
+    "path": "docs/demo/playreceipt-uplift-v4.mp4",
+    "sha256": "28693b21c09e657d9692e5e31a497f6a628bb139e37a4625f8f8cb3762621ac5",
+    "durationSeconds": 131.366667,
+    "sizeBytes": 9301413,
+    "video": {
+      "codec": "h264",
+      "width": 1920,
+      "height": 1080,
+      "framesPerSecond": 30,
+      "pixelFormat": "yuv420p"
+    },
+    "audio": {
+      "codec": "aac",
+      "sampleRate": 22050,
+      "channels": 1,
+      "meanVolumeDb": -20.3,
+      "maxVolumeDb": -2.9,
+      "decodedPcmMatchesV3ThroughSeconds": 131.30
+    }
+  },
+  "repair": {
+    "finding": "The v3 dialog frame visibly said never persisted, which was broader than the repository can prove.",
+    "change": "Only the 45-57 second dialog scene was replaced with the current bounded wording: in-memory evaluation, no PlayReceipt database or submission history, and a 64 KiB request cap.",
+    "priorCandidatePreserved": "docs/demo/playreceipt-uplift-v3.mp4",
+    "sourceScreenshot": {
+      "path": "docs/evidence/browser/playreceipt-uplift-dialog.png",
+      "sha256": "814cd35cbc87fd151c771ea3b915435ea69641663b2e4f5260be2390d78e8751"
+    }
+  },
+  "qualityChecks": {
+    "underThreeMinutes": true,
+    "audioPresent": true,
+    "burnedInCaptionCues": 12,
+    "blackSegmentsLongerThanOneSecond": 0,
+    "silenceSegmentsBelowMinus50DbLongerThanOneSecond": 0,
+    "fullDecodeErrors": 0,
+    "boundaryFramesInspectedAtSeconds": [45.05, 50.0, 56.9, 57.05],
+    "boundaryProof": {
+      "path": "docs/evidence/playreceipt-v4-boundary-proof.png",
+      "sha256": "26ad834ba92df2a509bae1785b3628eaf5cce795940797d7b3d6ee0fec19b9f5"
+    },
+    "codexAndGpt56Explained": true,
+    "copyrightedMusicIncluded": false,
+    "thirdPartyTrademarkFootageIncluded": false,
+    "stalePrivacyClaimRemoved": true
+  },
+  "sourcePreservation": {
+    "originalPublicVideoPreserved": "https://youtu.be/9M4A2hQYgps",
+    "priorCandidatesPreserved": [
+      "docs/demo/playreceipt-uplift-v2.mp4",
+      "docs/demo/playreceipt-uplift-v3.mp4"
+    ],
+    "replacementPolicy": "Upload v4 as a new public YouTube video; do not overwrite or mislabel the original."
+  },
+  "verdict": "READY_FOR_INDEPENDENT_REVIEW"
+}

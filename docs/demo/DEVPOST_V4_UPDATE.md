@@ -1,4 +1,4 @@
-# PlayReceipt Devpost v3 update package
+# PlayReceipt Devpost v4 update package
 
 Apply only after the independent uplift review is `PASS`, public main matches the reviewed commit, Vercel live verification passes, and the v3 YouTube watch page passes 1080p/audio/metadata readback.
 
@@ -9,7 +9,7 @@ Apply only after the independent uplift review is `PASS`, public main matches th
 - Primary Codex Session ID: `019f6f06-9f9a-7042-a4be-9292df9fb7cf`
 - Live app: `https://playreceipt.vercel.app`
 - Repository: `https://github.com/Yesol-Pilot/playreceipt`
-- New video: `{{V3_PUBLIC_YOUTUBE_URL}}`
+- New video: `{{V4_PUBLIC_YOUTUBE_URL}}`
 
 ## Tagline
 
@@ -38,7 +38,7 @@ Evidence, not vibes, for AI-built games.
 
 ## Required story copy
 
-Use `docs/demo/DEVPOST_SUBMISSION.md` as the complete field source after replacing its public video URL and current independent-review sentence with the verified v3 values.
+Use `docs/demo/DEVPOST_SUBMISSION.md` as the complete field source after replacing its public video URL and current independent-review sentence with the verified v4 values.
 
 The first two paragraphs visible to judges must preserve this sequence:
 

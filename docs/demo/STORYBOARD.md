@@ -1,6 +1,6 @@
 # PlayReceipt 3-minute demo storyboard
 
-Target runtime: 125–140 seconds. Public English voiceover and burned-in captions. Current v3 candidate: 131.39 seconds.
+Target runtime: 125–140 seconds. Public English voiceover and burned-in captions. Current v4 candidate: 131.37 seconds.
 
 | Beat | Visual | Proof |
 |---|---|---|

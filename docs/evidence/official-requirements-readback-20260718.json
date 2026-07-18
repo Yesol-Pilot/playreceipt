@@ -1,8 +1,8 @@
 {
   "schema": "playreceipt.official-requirements-readback.v1",
-  "checkedAt": "2026-07-18T15:39:56+09:00",
+  "checkedAt": "2026-07-18T17:49:18+09:00",
   "source": "https://openai.devpost.com/rules",
-  "localHead": "2a206d1a93ab05b1d238d057c7131ab102a6b536",
+  "localHead": "65d02f0f3ff486d4d2ef2448c733ec20de0610fc",
   "deadline": {
     "official": "2026-07-21T17:00:00-07:00",
     "korea": "2026-07-22T09:00:00+09:00"
@@ -17,7 +17,7 @@
     {
       "requirement": "Public YouTube demo under three minutes with audio covering the product, Codex, and GPT-5.6",
       "status": "CANDIDATE_READY_PUBLIC_UPLOAD_PENDING",
-      "evidence": ["docs/demo/playreceipt-uplift-v3.mp4", "docs/demo/VOICEOVER.txt", "docs/evidence/video-uplift-candidate-20260718.json"]
+      "evidence": ["docs/demo/playreceipt-uplift-v4.mp4", "docs/demo/VOICEOVER.txt", "docs/evidence/video-uplift-v4-candidate-20260718.json"]
     },
     {
       "requirement": "Repository URL, relevant license, and clear prior-work separation",
@@ -37,7 +37,7 @@
     {
       "requirement": "Primary /feedback Codex Session ID",
       "status": "RECORDED_SUBMISSION_READBACK_PENDING",
-      "evidence": ["docs/demo/DEVPOST_SUBMISSION.md", "docs/demo/YOUTUBE_V3_UPLOAD.md"]
+      "evidence": ["docs/demo/DEVPOST_SUBMISSION.md", "docs/demo/YOUTUBE_V4_UPLOAD.md"]
     },
     {
       "requirement": "Submission saved and entered before the deadline",

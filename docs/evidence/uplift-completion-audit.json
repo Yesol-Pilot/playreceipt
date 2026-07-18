@@ -1,8 +1,8 @@
 {
   "schema": "playreceipt.completion-audit.v1",
   "objective": "Add a real Codex audit-repair-reaudit workflow and reusable evidence across product, tests, video, and Devpost; revalidate and resubmit before deadline.",
-  "auditedAt": "2026-07-18T16:25:48+09:00",
-  "auditedBaseHead": "87c402a3166b7cddbd9241b5f3bbdf715e6b4101",
+  "auditedAt": "2026-07-18T17:49:18+09:00",
+  "auditedBaseHead": "65d02f0f3ff486d4d2ef2448c733ec20de0610fc",
   "auditArtifactIncludedInNextCommit": true,
   "publicMainBeforeUplift": "275945b0a83391696d5fbb3fe28613e2abb4afe0",
   "requirements": [
@@ -61,10 +61,10 @@
       "id": "improved-video",
       "status": "READY_FOR_INDEPENDENT_REVIEW",
       "evidence": [
-        "docs/demo/playreceipt-uplift-v3.mp4",
-        "docs/evidence/video-uplift-candidate-20260718.json",
+        "docs/demo/playreceipt-uplift-v4.mp4",
+        "docs/evidence/video-uplift-v4-candidate-20260718.json",
         "docs/demo/playreceipt-uplift-v3-thumbnail-1280.png",
-        "docs/demo/YOUTUBE_V3_UPLOAD.md"
+        "docs/demo/YOUTUBE_V4_UPLOAD.md"
       ],
       "remaining": "Independent review, public upload, 1080p/audio/metadata readback, and public URL receipt."
     },

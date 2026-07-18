@@ -1,0 +1,64 @@
+{
+  "schema": "playreceipt.pre-review-hardening.v1",
+  "auditedAt": "2026-07-18T15:32:08+09:00",
+  "head": "f3824126004485c9ddb8f6f6b93ad7493bd004e2",
+  "repairs": [
+    {
+      "commit": "b664d00",
+      "finding": "Adapter tests asserted verdicts but not exact receipt parity.",
+      "repair": "Deep-equality or stable receipt-ID assertions now bind HTTP, Vercel API, CLI, and Action adapters to the direct engine."
+    },
+    {
+      "commit": "fb8c859",
+      "finding": "The Action had only been executed inside its own repository.",
+      "repair": "The Action now runs in a temporary external consumer workspace during tests."
+    },
+    {
+      "commit": "47fc90b",
+      "finding": "Below-threshold evidence, absent counters, and invalid numeric ranges blurred REPAIR and UNVERIFIED.",
+      "repair": "Threshold failures, missing evidence, and schema-invalid ranges now retain distinct verdict semantics."
+    },
+    {
+      "commit": "eaa25e0",
+      "finding": "Wrong-shaped but valid JSON could throw instead of producing an honest missing-evidence result.",
+      "repair": "Malformed balance and provenance shapes degrade to UNVERIFIED without a server error."
+    },
+    {
+      "commit": "1bdece7",
+      "finding": "Evidence-object key order could affect content-addressed receipt IDs.",
+      "repair": "Evidence records are recursively canonicalized before gate construction and hashing."
+    },
+    {
+      "commit": "0b61797",
+      "finding": "Non-string source metadata could succeed in the API and then crash browser rendering.",
+      "repair": "Receipt metadata is normalized to a stable browser-safe output contract."
+    },
+    {
+      "commit": "d24c9ac",
+      "finding": "CI blocking was executed for REPAIR but only inferred for UNVERIFIED.",
+      "repair": "The Action test now executes and proves both blocking verdicts while preserving HUMAN_REVIEW as a warning."
+    },
+    {
+      "commit": "1257ef5",
+      "finding": "Vercel GET, size limit, 404, and 405 branches lacked executable adapter proof.",
+      "repair": "One adapter-contract test now executes every public HTTP boundary without changing the 11-test video claim."
+    },
+    {
+      "commit": "f382412",
+      "finding": "Browser case loading could remain dimmed and unusable after a network failure.",
+      "repair": "Loading cleanup is unconditional and the custom audit remains usable when its sample request fails."
+    }
+  ],
+  "verification": {
+    "windowsCurrent": "11/11 PASS",
+    "windowsNode20": "11/11 PASS",
+    "linuxWsl": "11/11 PASS",
+    "lineCoveragePercent": 96.52,
+    "functionCoveragePercent": 96.39,
+    "brokenReceiptIdPreserved": "3d0c9c78cfd46954",
+    "repairedReceiptIdPreserved": "29798c9e9f81686b",
+    "secretScan": "PASS with 0 findings"
+  },
+  "publicWritesExecuted": false,
+  "verdict": "READY_FOR_INDEPENDENT_REVIEW"
+}

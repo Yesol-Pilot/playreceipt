@@ -1,8 +1,8 @@
 {
   "schema": "playreceipt.completion-audit.v1",
   "objective": "Add a real Codex audit-repair-reaudit workflow and reusable evidence across product, tests, video, and Devpost; revalidate and resubmit before deadline.",
-  "auditedAt": "2026-07-18T14:58:00+09:00",
-  "auditedBaseHead": "3c29eaf810226c9bde961cea9e21e2f0aaf76073",
+  "auditedAt": "2026-07-18T15:32:08+09:00",
+  "auditedBaseHead": "f3824126004485c9ddb8f6f6b93ad7493bd004e2",
   "auditArtifactIncludedInNextCommit": true,
   "publicMainBeforeUplift": "275945b0a83391696d5fbb3fe28613e2abb4afe0",
   "requirements": [
@@ -38,7 +38,9 @@
         "public/schema/game-evidence.schema.json",
         "action.yml",
         "api/receipt.js",
-        "docs/evidence/runtime-matrix-verification-20260718.json"
+        "docs/evidence/runtime-matrix-verification-20260718.json",
+        "docs/evidence/coverage-verification-20260718.json",
+        "docs/evidence/pre-review-hardening-20260718.json"
       ],
       "remaining": "Public schema and POST parity readback after deploy."
     },

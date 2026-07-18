@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import handler from "../api/receipt.js";
 import repaired from "../examples/repaired-evidence.json" with { type: "json" };
+import { auditGameEvidence } from "../src/audit.js";
 
 function responseRecorder() {
   return {
@@ -18,7 +19,7 @@ test("Vercel POST adapter shares the audit engine and rejects non-JSON", async (
   const success = responseRecorder();
   await handler({ method: "POST", headers: { "content-type": "Application/JSON; Charset=UTF-8" }, body: repaired }, success);
   assert.equal(success.statusCode, 200);
-  assert.equal(success.body.verdict, "HUMAN_REVIEW");
+  assert.deepEqual(success.body, auditGameEvidence(repaired));
   assert.equal(success.headers["cache-control"], "no-store");
 
   const wrongType = responseRecorder();

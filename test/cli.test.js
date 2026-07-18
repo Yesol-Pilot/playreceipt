@@ -2,6 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
+import { auditGameEvidence } from "../src/audit.js";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 
@@ -11,8 +13,9 @@ function runCli(args) {
 
 test("README audit command works without --out", () => {
   const result = runCli(["audit", "examples/overclock-20260717.json"]);
+  const input = JSON.parse(readFileSync(new URL("../examples/overclock-20260717.json", import.meta.url), "utf8"));
   assert.equal(result.status, 2);
-  assert.equal(JSON.parse(result.stdout).verdict, "REPAIR");
+  assert.deepEqual(JSON.parse(result.stdout), auditGameEvidence(input));
 });
 
 test("README repaired simulation does not silently fall back to broken", () => {

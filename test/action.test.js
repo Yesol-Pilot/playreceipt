@@ -4,6 +4,8 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { auditGameEvidence } from "../src/audit.js";
+import repaired from "../examples/repaired-evidence.json" with { type: "json" };
 
 test("GitHub Action exposes a stable human-review receipt without failing CI", async (context) => {
   const directory = await mkdtemp(join(tmpdir(), "playreceipt-action-"));
@@ -22,8 +24,10 @@ test("GitHub Action exposes a stable human-review receipt without failing CI", a
   });
   assert.equal(run.status, 0, run.stderr);
   assert.match(run.stdout, /::warning::Human fun calibration/);
-  assert.match(await readFile(output, "utf8"), /verdict=HUMAN_REVIEW/);
-  assert.match(await readFile(output, "utf8"), /receipt-id=([a-f0-9]{16})/);
+  const expected = auditGameEvidence(repaired);
+  const actionOutput = await readFile(output, "utf8");
+  assert.match(actionOutput, /verdict=HUMAN_REVIEW/);
+  assert.match(actionOutput, new RegExp(`receipt-id=${expected.receiptId}`));
   assert.match(await readFile(summary, "utf8"), /PlayReceipt HUMAN_REVIEW/);
 });
 

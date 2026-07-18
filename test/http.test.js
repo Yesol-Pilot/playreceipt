@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { once } from "node:events";
 import { createPlayReceiptServer } from "../src/http.js";
 import { readFile } from "node:fs/promises";
+import { auditGameEvidence } from "../src/audit.js";
 
 test("local server serves the dashboard, assets, and computed API", async (context) => {
   const server = createPlayReceiptServer();
@@ -37,8 +38,7 @@ test("local server serves the dashboard, assets, and computed API", async (conte
   });
   assert.equal(custom.status, 200);
   const customReceipt = await custom.json();
-  assert.equal(customReceipt.verdict, "HUMAN_REVIEW");
-  assert.equal(customReceipt.repairPlan.length, 0);
+  assert.deepEqual(customReceipt, auditGameEvidence(JSON.parse(sample)));
 
   const malformed = await fetch(`${base}/api/receipt`, {
     method: "POST",

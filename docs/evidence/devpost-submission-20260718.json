@@ -6,6 +6,7 @@
   "projectUrl": "https://devpost.com/software/playreceipt",
   "status": "SUBMITTED",
   "confirmationReadback": "Project submitted! Continue to edit your project until the hackathon deadline: July 21, 2026 at 08:00pm EDT.",
+  "browserEvidence": "docs/evidence/browser/devpost-submitted.png",
   "deadline": "2026-07-22T09:00:00+09:00",
   "publicVideo": "https://youtu.be/9M4A2hQYgps",
   "liveApp": "https://playreceipt.vercel.app",

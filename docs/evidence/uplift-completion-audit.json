@@ -41,7 +41,8 @@
         "api/receipt.js",
         "docs/evidence/runtime-matrix-verification-20260718.json",
         "docs/evidence/coverage-verification-20260718.json",
-        "docs/evidence/pre-review-hardening-20260718.json"
+        "docs/evidence/pre-review-hardening-20260718.json",
+        "docs/evidence/schema-validation-20260718.json"
       ],
       "remaining": "Public schema and POST parity readback after deploy."
     },

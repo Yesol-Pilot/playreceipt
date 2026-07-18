@@ -22,6 +22,7 @@
     "coverageReadback": "docs/evidence/coverage-verification-20260718.json",
     "preReviewHardening": "docs/evidence/pre-review-hardening-20260718.json",
     "mobileBrowserReadback": "docs/evidence/browser-mobile-verification-20260718.json",
+    "schemaValidation": "docs/evidence/schema-validation-20260718.json",
     "videoCandidate": "docs/evidence/video-uplift-candidate-20260718.json",
     "browserReadback": [
       "docs/evidence/browser/playreceipt-uplift-dialog.png",

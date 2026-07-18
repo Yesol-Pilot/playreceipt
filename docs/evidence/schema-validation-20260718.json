@@ -1,0 +1,34 @@
+{
+  "schema": "playreceipt.schema-validation.v1",
+  "checkedAt": "2026-07-18T16:50:19+09:00",
+  "head": "256d932376ebb2b33c183fe0e3c43b3b935e96dc",
+  "schemaPath": "public/schema/game-evidence.schema.json",
+  "validator": {
+    "command": "npx --package ajv-cli --package ajv-formats ajv validate --spec=draft2020 -c ajv-formats",
+    "repositoryDependenciesAdded": false,
+    "formatPluginRequired": "ajv-formats supplies the standard date format assertion"
+  },
+  "cases": [
+    {
+      "input": "public/sample-evidence.json",
+      "expected": "VALID",
+      "actual": "VALID"
+    },
+    {
+      "input": "examples/repaired-evidence.json",
+      "expected": "VALID",
+      "actual": "VALID"
+    },
+    {
+      "input": "temporary project-only partial document",
+      "expected": "VALID because missing metrics become UNVERIFIED",
+      "actual": "VALID"
+    },
+    {
+      "input": "temporary document with policy winrates -1 and 2",
+      "expected": "SCHEMA_INVALID and engine UNVERIFIED",
+      "actual": "SCHEMA_INVALID: must be >= 0; CLI exit 3 with UNVERIFIED"
+    }
+  ],
+  "verdict": "PASS"
+}

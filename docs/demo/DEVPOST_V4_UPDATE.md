@@ -1,6 +1,6 @@
 # PlayReceipt Devpost v4 update package
 
-Apply only after the independent uplift review is `PASS`, public main matches the reviewed commit, Vercel live verification passes, and the v3 YouTube watch page passes 1080p/audio/metadata readback.
+Apply only after the independent uplift review is `PASS`, public main matches the reviewed commit, Vercel live verification passes, and the v4 YouTube watch page passes 1080p/audio/metadata readback.
 
 ## Immutable identifiers
 
@@ -9,7 +9,7 @@ Apply only after the independent uplift review is `PASS`, public main matches th
 - Primary Codex Session ID: `019f6f06-9f9a-7042-a4be-9292df9fb7cf`
 - Live app: `https://playreceipt.vercel.app`
 - Repository: `https://github.com/Yesol-Pilot/playreceipt`
-- New video: `{{V4_PUBLIC_YOUTUBE_URL}}`
+- New video: `https://youtu.be/sAxCEDS5-tU`
 
 ## Tagline
 

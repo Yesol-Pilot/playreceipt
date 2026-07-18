@@ -1,0 +1,26 @@
+{
+  "schema": "playreceipt.devpost-submission.v2",
+  "verifiedAt": "2026-07-19T01:31:12+09:00",
+  "hackathon": "OpenAI Build Week",
+  "track": "Developer Tools",
+  "submissionId": "1085807",
+  "projectUrl": "https://devpost.com/software/playreceipt",
+  "status": "SUBMITTED",
+  "completion": "5/5 steps done",
+  "confirmationReadback": "Project submitted!",
+  "publicVideo": "https://youtu.be/sAxCEDS5-tU",
+  "liveApp": "https://playreceipt.vercel.app",
+  "publicRepository": "https://github.com/Yesol-Pilot/playreceipt",
+  "primaryCodexSessionId": "019f6f06-9f9a-7042-a4be-9292df9fb7cf",
+  "publicReadback": {
+    "newVideoEmbed": true,
+    "judgeSuppliedJsonFlow": true,
+    "elevenRegressionTests": true,
+    "githubActionPath": true,
+    "liveLink": true,
+    "repositoryLink": true,
+    "galleryImagesPreserved": 3
+  },
+  "judgeInstructionsUpdated": true,
+  "verdict": "PASS"
+}

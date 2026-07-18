@@ -1,0 +1,75 @@
+{
+  "schema": "playreceipt.public-uplift-verification.v1",
+  "verifiedAt": "2026-07-18T22:46:17.4508111+09:00",
+  "releasedHead": "32570f2c455a81716a4c3a94a30e8278b44451f1",
+  "github": {
+    "repository": "https://github.com/Yesol-Pilot/playreceipt",
+    "workflow": "PlayReceipt",
+    "runId": 29646241469,
+    "runUrl": "https://github.com/Yesol-Pilot/playreceipt/actions/runs/29646241469",
+    "event": "push",
+    "headSha": "32570f2c455a81716a4c3a94a30e8278b44451f1",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "vercel": {
+    "url": "https://playreceipt.vercel.app",
+    "httpStatus": 200,
+    "title": "PlayReceipt — Build passed. Game failed.",
+    "initialVerdict": "REPAIR",
+    "initialReceiptId": "3d0c9c78cfd46954",
+    "auditTrailSteps": 4,
+    "customAudit": {
+      "verdict": "HUMAN_REVIEW",
+      "receiptId": "1566758e754f4695",
+      "privacyCopyVisible": true,
+      "copyReceiptIdMatched": true,
+      "downloadReceiptIdMatched": true
+    },
+    "api": {
+      "validJsonStatus": 200,
+      "wrongContentTypeStatus": 415,
+      "oversizedParsedBodyStatus": 413,
+      "publicSchemaStatus": 200
+    },
+    "mobile": {
+      "viewportWidth": 390,
+      "documentScrollWidth": 375,
+      "bodyScrollWidth": 375,
+      "horizontalOverflow": false
+    },
+    "pageErrors": [],
+    "consoleAssessment": "No application console error. The two failed-resource messages were the deliberately invoked 415 and 413 negative API checks.",
+    "screenshots": [
+      "docs/evidence/browser/playreceipt-public-desktop-20260718.png",
+      "docs/evidence/browser/playreceipt-public-mobile-20260718.png"
+    ]
+  },
+  "youtube": {
+    "watchUrl": "https://youtu.be/sAxCEDS5-tU",
+    "visibility": "PUBLIC",
+    "title": "PlayReceipt — Build Passed. Game Failed. | OpenAI Build Week",
+    "channel": "허예솔",
+    "duration": "2:12",
+    "hdProcessing": "complete",
+    "captions": "English automatic captions present; burned-in captions retained in the source video",
+    "copyrightChecks": "complete; no issues found",
+    "thumbnail": "docs/demo/playreceipt-uplift-v3-thumbnail-1280.png",
+    "anonymousReadback": "YouTube oEmbed returned the public title, channel, embed URL, and thumbnail without authentication"
+  },
+  "devpost": {
+    "submissionId": "1085807",
+    "projectUrl": "https://devpost.com/software/playreceipt",
+    "status": "SUBMITTED",
+    "steps": "5/5",
+    "confirmation": "Project submitted!",
+    "publicVideo": "https://youtu.be/sAxCEDS5-tU",
+    "publicReadback": {
+      "newVideoEmbed": true,
+      "judgeSuppliedJsonFlow": true,
+      "elevenRegressionTests": true,
+      "githubActionPath": true
+    }
+  },
+  "verdict": "PASS"
+}

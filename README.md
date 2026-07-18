@@ -6,7 +6,7 @@ PlayReceipt is an evidence gate for AI-built games. It converts reliability, bal
 
 **Live demo:** [playreceipt.vercel.app](https://playreceipt.vercel.app)
 
-**1:40 demo video:** [youtu.be/9M4A2hQYgps](https://youtu.be/9M4A2hQYgps)
+**2:12 uplift demo:** [youtu.be/sAxCEDS5-tU](https://youtu.be/sAxCEDS5-tU)
 
 **Build Week submission:** [devpost.com/software/playreceipt](https://devpost.com/software/playreceipt)
 

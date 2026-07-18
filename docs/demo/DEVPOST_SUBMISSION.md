@@ -20,7 +20,7 @@ Developer Tools
 
 - Live app: https://playreceipt.vercel.app
 - Public repository: https://github.com/Yesol-Pilot/playreceipt
-- Public demo video: https://youtu.be/9M4A2hQYgps
+- Public demo video: https://youtu.be/sAxCEDS5-tU
 - Primary Codex Session ID: `019f6f06-9f9a-7042-a4be-9292df9fb7cf`
 
 ## Inspiration
@@ -47,7 +47,7 @@ Codex was the engineering control loop, not a decorative tool. It challenged an 
 
 The hard part was not generating more metrics; it was preserving epistemic boundaries. Reliability evidence must not become a claim about fun. A repaired machine-verifiable state must not silently become `PASS`. Existing game evidence also had to remain isolated, read-only, and clearly separated from new Build Week work.
 
-Independent review of the base submission found two real defects in the documented CLI and HTTP path handling. We repaired both, converted them into regression tests, and reran the full suite; that base version then received a 90/100 independent review. The interactive/CI uplift is tracked as a separate P2 gate and is not represented as reviewed until its current commit range passes a fresh read-only review.
+Independent review of the base submission found two real defects in the documented CLI and HTTP path handling. We repaired both, converted them into regression tests, and reran the full suite. A fresh ClaudeNeo Sonnet review of the complete interactive/CI uplift then returned `OVERALL: PASS` with no BLOCKER or HIGH findings; after closing its two MEDIUM findings, the restricted-tool re-review returned `OVERALL: PASS` with no BLOCKER, HIGH, or MEDIUM findings. Both reports and the exact repair trail are committed under `docs/reviews/`.
 
 ## Accomplishments
 

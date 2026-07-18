@@ -1,0 +1,35 @@
+{
+  "schema": "playreceipt.youtube-public.v1",
+  "verifiedAt": "2026-07-19T01:31:12+09:00",
+  "videoId": "sAxCEDS5-tU",
+  "watchUrl": "https://youtu.be/sAxCEDS5-tU",
+  "visibility": "PUBLIC",
+  "title": "PlayReceipt — Build Passed. Game Failed. | OpenAI Build Week",
+  "channel": "허예솔",
+  "channelHandle": "@yesol95",
+  "duration": "2:12",
+  "thumbnail": "docs/demo/playreceipt-uplift-v3-thumbnail-1280.png",
+  "settings": {
+    "madeForKids": false,
+    "alteredRealisticContent": false,
+    "paidPromotion": false,
+    "language": "English",
+    "category": "Science & Technology",
+    "embeddingAllowed": true,
+    "license": "Standard YouTube License"
+  },
+  "processing": {
+    "standardDefinition": "complete",
+    "highDefinition": "complete",
+    "automaticEnglishCaptions": true,
+    "copyrightChecks": "complete; no issues found"
+  },
+  "anonymousReadback": {
+    "method": "YouTube oEmbed without authentication",
+    "titleMatched": true,
+    "channelMatched": true,
+    "embedReturned": true,
+    "thumbnailReturned": true
+  },
+  "verdict": "PASS"
+}

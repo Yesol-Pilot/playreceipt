@@ -20,9 +20,17 @@ The included real-project case is the point: 2,000 seeded runs completed with ze
 
 ## Run it
 
-Requires Node.js 20 or newer. There are no runtime npm dependencies.
+### Installation and supported platforms
+
+- **No-build judge path:** the hosted demo works in current desktop and mobile browsers with no account or installation.
+- **CLI and local dashboard:** Node.js 20+ on Windows, macOS, or Linux. The committed runtime receipts verify Windows Node 20 and Linux/WSL; macOS remains supported by the Node runtime contract but was not independently exercised for this submission.
+- **GitHub Action:** any GitHub Actions runner that supports the `node20` JavaScript-action runtime.
+
+There are no runtime npm dependencies and no `npm install` step. Clone or download the public repository, then run:
 
 ```bash
+git clone https://github.com/Yesol-Pilot/playreceipt.git
+cd playreceipt
 npm test
 npm run demo
 ```

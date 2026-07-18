@@ -35,7 +35,7 @@ test("GitHub Action exposes a stable human-review receipt without failing CI", a
   assert.match(await readFile(summary, "utf8"), /PlayReceipt HUMAN_REVIEW/);
 });
 
-test("GitHub Action blocks repair evidence and emits actionable annotations", () => {
+test("GitHub Action blocks repair and unverified evidence with actionable annotations", async (context) => {
   const run = spawnSync(process.execPath, ["src/action.js"], {
     cwd: new URL("..", import.meta.url),
     encoding: "utf8",
@@ -44,6 +44,19 @@ test("GitHub Action blocks repair evidence and emits actionable annotations", ()
   assert.equal(run.status, 1);
   assert.match(run.stdout, /::error::/);
   assert.match(run.stdout, /PlayReceipt REPAIR/);
+
+  const directory = await mkdtemp(join(tmpdir(), "playreceipt-action-missing-"));
+  context.after(() => rm(directory, { recursive: true, force: true }));
+  const evidence = join(directory, "missing.json");
+  await writeFile(evidence, JSON.stringify({ project: "missing-evidence" }), "utf8");
+  const missing = spawnSync(process.execPath, ["src/action.js"], {
+    cwd: new URL("..", import.meta.url),
+    encoding: "utf8",
+    env: { ...process.env, INPUT_EVIDENCE: evidence },
+  });
+  assert.equal(missing.status, 1);
+  assert.match(missing.stdout, /::error::/);
+  assert.match(missing.stdout, /PlayReceipt UNVERIFIED/);
 });
 
 test("bundled workflow safely reads the hyphenated receipt-id output", async () => {

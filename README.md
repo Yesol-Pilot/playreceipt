@@ -31,6 +31,20 @@ Open `http://127.0.0.1:4175`.
 
 The browser includes **Audit your evidence**: paste a JSON evidence bundle (up to 64 KiB), receive the exact same deterministic receipt as the CLI, then copy or download it. The endpoint is credential-free, stores no submission history, and returns `415` for non-JSON requests.
 
+### 30-second judge path
+
+1. Open the [live demo](https://playreceipt.vercel.app) and choose **Audit your evidence**.
+2. Keep the preloaded sample or paste a document matching [`public/schema/game-evidence.schema.json`](public/schema/game-evidence.schema.json).
+3. Select **Issue receipt**, then copy the exact JSON. The expected boundary is `HUMAN_REVIEW`, not `PASS`.
+
+The same no-build test works over HTTP:
+
+```bash
+curl -X POST https://playreceipt.vercel.app/api/receipt \
+  -H "content-type: application/json" \
+  --data-binary @examples/repaired-evidence.json
+```
+
 CLI examples:
 
 ```bash

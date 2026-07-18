@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playreceipt.vercel.app/schema/game-evidence.schema.json",
+  "title": "PlayReceipt game evidence",
+  "description": "A partial evidence bundle. Missing machine evidence is intentionally audited as UNVERIFIED rather than rejected.",
+  "type": "object",
+  "required": ["project"],
+  "properties": {
+    "project": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "checkedAt": { "type": "string", "format": "date" },
+    "sourceKind": { "type": "string", "maxLength": 100 },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "reliability": {
+          "type": "object",
+          "properties": {
+            "runs": { "type": "integer", "minimum": 0 },
+            "crashes": { "type": "integer", "minimum": 0 },
+            "stalls": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": true
+        },
+        "balance": {
+          "type": "object",
+          "properties": {
+            "policyWinrates": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["policy", "winrate"],
+                "properties": {
+                  "policy": { "type": "string", "minLength": 1 },
+                  "winrate": { "type": "number", "minimum": 0, "maximum": 1 }
+                },
+                "additionalProperties": true
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+        "accessibility": {
+          "type": "object",
+          "properties": {
+            "minFontPx": { "type": "number", "minimum": 0 },
+            "photosensitivityPromptBeforeCanvas": { "type": "boolean" },
+            "reducedMotion": { "type": "boolean" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "humanReview": {
+      "type": "object",
+      "properties": {
+        "funReviewed": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate", "path"],
+        "properties": {
+          "gate": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

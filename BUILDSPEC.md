@@ -36,6 +36,7 @@ This repository is new work created during OpenAI Build Week. It uses one read-o
 - No runtime npm dependencies.
 - Deterministic seeded simulation.
 - JSON is both the input and receipt interchange format.
+- `public/schema/game-evidence.schema.json` documents the interoperable input contract while allowing partial bundles to become `UNVERIFIED`.
 - Source evidence remains unmodified and is copied with provenance.
 - POST audit requests reject non-JSON, malformed, or oversized bodies without persisting input.
 - Browser, CLI, API, and GitHub Action use the same `auditGameEvidence` implementation.

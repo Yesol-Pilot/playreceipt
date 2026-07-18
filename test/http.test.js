@@ -13,15 +13,19 @@ test("local server serves the dashboard, assets, and computed API", async (conte
   assert.equal(typeof address, "object");
   const base = `http://127.0.0.1:${address.port}`;
 
-  const [home, script, receipt] = await Promise.all([
+  const [home, script, schema, receipt] = await Promise.all([
     fetch(`${base}/`),
     fetch(`${base}/app.js`),
+    fetch(`${base}/schema/game-evidence.schema.json`),
     fetch(`${base}/api/receipt?case=repaired`),
   ]);
   assert.equal(home.status, 200);
   assert.match(home.headers.get("content-type"), /text\/html/);
   assert.equal(script.status, 200);
   assert.match(script.headers.get("content-type"), /text\/javascript/);
+  assert.equal(schema.status, 200);
+  assert.match(schema.headers.get("content-type"), /application\/json/);
+  assert.equal((await schema.json()).$id, "https://playreceipt.vercel.app/schema/game-evidence.schema.json");
   assert.equal(receipt.status, 200);
   assert.equal((await receipt.json()).verdict, "HUMAN_REVIEW");
 

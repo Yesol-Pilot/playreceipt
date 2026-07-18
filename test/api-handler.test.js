@@ -27,6 +27,22 @@ test("Vercel adapter shares the audit engine and enforces its HTTP contract", as
   assert.equal(wrongType.statusCode, 415);
   assert.match(wrongType.body.error, /application\/json/);
 
+  const misleadingType = responseRecorder();
+  await handler({
+    method: "POST",
+    headers: { "content-type": "text/plain; note=application/json" },
+    body: repaired,
+  }, misleadingType);
+  assert.equal(misleadingType.statusCode, 415);
+
+  const vendorJson = responseRecorder();
+  await handler({
+    method: "POST",
+    headers: { "content-type": "application/vnd.playreceipt+json" },
+    body: repaired,
+  }, vendorJson);
+  assert.equal(vendorJson.statusCode, 200);
+
   const oversized = responseRecorder();
   await handler({
     method: "POST",
@@ -34,6 +50,14 @@ test("Vercel adapter shares the audit engine and enforces its HTTP contract", as
     body: { project: "oversized", padding: "x".repeat(70 * 1024) },
   }, oversized);
   assert.equal(oversized.statusCode, 413);
+
+  const oversizedByHeader = responseRecorder();
+  await handler({
+    method: "POST",
+    headers: { "content-type": "application/json", "content-length": String(65 * 1024) },
+    body: repaired,
+  }, oversizedByHeader);
+  assert.equal(oversizedByHeader.statusCode, 413);
 
   const get = responseRecorder();
   await handler({ method: "GET", headers: {}, query: { case: "repaired" } }, get);

@@ -2,6 +2,12 @@ import { auditGameEvidence } from "./audit.js";
 
 export const MAX_AUDIT_BYTES = 64 * 1024;
 
+export function isJsonContentType(value = "") {
+  const mediaType = String(value).split(";", 1)[0].trim().toLowerCase();
+  return mediaType === "application/json"
+    || /^application\/[a-z0-9!#$&^_.+-]+\+json$/.test(mediaType);
+}
+
 export function auditSubmittedEvidence(input) {
   return auditGameEvidence(input);
 }
@@ -29,7 +35,7 @@ export function parseSubmittedEvidence(raw) {
 
 export async function readSubmittedEvidence(request) {
   const contentType = request.headers["content-type"] ?? "";
-  if (!contentType.toLowerCase().includes("application/json")) {
+  if (!isJsonContentType(contentType)) {
     const error = new Error("Content-Type must be application/json");
     error.statusCode = 415;
     throw error;

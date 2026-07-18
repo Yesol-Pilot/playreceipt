@@ -59,6 +59,20 @@ test("local server serves the dashboard, assets, and computed API", async (conte
   });
   assert.equal(wrongType.status, 415);
 
+  const misleadingType = await fetch(`${base}/api/receipt`, {
+    method: "POST",
+    headers: { "content-type": "text/plain; note=application/json" },
+    body: sample,
+  });
+  assert.equal(misleadingType.status, 415);
+
+  const vendorJson = await fetch(`${base}/api/receipt`, {
+    method: "POST",
+    headers: { "content-type": "application/vnd.playreceipt+json" },
+    body: sample,
+  });
+  assert.equal(vendorJson.status, 200);
+
   const oversized = await fetch(`${base}/api/receipt`, {
     method: "POST",
     headers: { "content-type": "application/json" },

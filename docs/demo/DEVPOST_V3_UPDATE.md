@@ -23,7 +23,7 @@ Evidence, not vibes, for AI-built games.
 2. Select **Audit your evidence**.
 3. Keep the preloaded JSON and select **Issue receipt**.
 4. Confirm `HUMAN_REVIEW`, `7 PASS · 0 REPAIR · 1 HUMAN · 0 MISSING`, and the four-stage trail.
-5. Select **Copy receipt JSON**. The receipt is the exact audited output; the server stores no submission history.
+5. Select **Copy receipt JSON**. The receipt is the exact audited output; PlayReceipt evaluates it in memory and has no database or submission-history write path.
 
 ### CI path
 
@@ -52,7 +52,7 @@ The first two paragraphs visible to judges must preserve this sequence:
 | Order | Asset | Caption |
 |---:|---|---|
 | 1 | `docs/demo/playreceipt-uplift-v3-thumbnail-1280.png` | A green build can still earn REPAIR. |
-| 2 | `docs/evidence/browser/playreceipt-uplift-dialog.png` | Paste judge-supplied evidence. No account, no upload history. |
+| 2 | `docs/evidence/browser/playreceipt-uplift-dialog.png` | Paste judge-supplied evidence. In-memory evaluation, no app database or submission history, and a 64 KiB request cap. |
 | 3 | `docs/demo/playreceipt-uplift-gallery-1280.png` | Exact receipt plus the ingest-to-human-boundary trail. |
 | 4 | `docs/demo/playreceipt-uplift-ci.png` | One deterministic engine across browser, API, CLI, and GitHub Action. |
 | 5 | `docs/demo/playreceipt-uplift-mobile-card-1280.png` | True 390px readback: all eight gates retained, no horizontal overflow, zero console errors. |

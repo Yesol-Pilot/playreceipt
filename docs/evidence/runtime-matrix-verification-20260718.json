@@ -1,0 +1,27 @@
+{
+  "schema": "playreceipt.runtime-matrix.v1",
+  "checkedAt": "2026-07-18T14:38:00+09:00",
+  "matrix": [
+    {
+      "platform": "Windows x64",
+      "runtime": "Node v20.20.2 official portable distribution",
+      "command": "node.exe --test",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "durationMs": 471.5532
+    },
+    {
+      "platform": "Linux under WSL",
+      "runtime": "Node v22.22.3",
+      "command": "node --test",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "durationMs": 629.593459,
+      "detail": "docs/evidence/linux-wsl-verification-20260718.json"
+    }
+  ],
+  "contract": "package.json requires Node >=20; action.yml declares node20.",
+  "verdict": "PASS"
+}

@@ -1,6 +1,6 @@
 {
   "schema": "playreceipt.devpost-gallery.v1",
-  "checkedAt": "2026-07-18T15:04:00+09:00",
+  "checkedAt": "2026-07-18T16:17:20+09:00",
   "assets": [
     {
       "order": 1,
@@ -32,7 +32,10 @@
     {
       "order": 5,
       "path": "docs/evidence/browser/playreceipt-uplift-mobile.png",
-      "caption": "The complete evidence ledger remains usable at 390px."
+      "width": 390,
+      "height": 2718,
+      "sha256": "a8fcd8e2251cd2bbc731caf8293a277e1e6b3f276276680b815782b17a976f4b",
+      "caption": "The judge-supplied receipt, all eight gates, provenance, and human boundary remain usable at 390px."
     }
   ],
   "verdict": "READY_FOR_INDEPENDENT_REVIEW"

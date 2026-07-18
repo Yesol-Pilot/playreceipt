@@ -14,15 +14,19 @@ test("local server serves the dashboard, assets, and computed API", async (conte
   assert.equal(typeof address, "object");
   const base = `http://127.0.0.1:${address.port}`;
 
-  const [home, script, schema, receipt] = await Promise.all([
+  const [home, script, favicon, schema, receipt] = await Promise.all([
     fetch(`${base}/`),
     fetch(`${base}/app.js`),
+    fetch(`${base}/favicon.svg`),
     fetch(`${base}/schema/game-evidence.schema.json`),
     fetch(`${base}/api/receipt?case=repaired`),
   ]);
   assert.equal(home.status, 200);
   assert.match(home.headers.get("content-type"), /text\/html/);
+  assert.match(await home.text(), /<meta name="viewport" content="width=device-width, initial-scale=1(?:\.0)?"/);
   assert.equal(script.status, 200);
+  assert.equal(favicon.status, 200);
+  assert.match(favicon.headers.get("content-type"), /image\/svg\+xml/);
   assert.match(script.headers.get("content-type"), /text\/javascript/);
   assert.equal(schema.status, 200);
   assert.match(schema.headers.get("content-type"), /application\/json/);

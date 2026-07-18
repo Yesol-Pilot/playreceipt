@@ -114,29 +114,41 @@ function renderReceipt(receipt) {
 
 async function loadCase(caseName) {
   document.body.dataset.loading = "true";
-  const response = await fetch(`/api/receipt?case=${encodeURIComponent(caseName)}`);
-  if (!response.ok) throw new Error("Unable to load receipt");
-  const receipt = await response.json();
-  renderReceipt(receipt);
-  document.body.dataset.loading = "false";
+  try {
+    const response = await fetch(`/api/receipt?case=${encodeURIComponent(caseName)}`);
+    if (!response.ok) throw new Error("Unable to load receipt");
+    const receipt = await response.json();
+    renderReceipt(receipt);
+  } finally {
+    document.body.dataset.loading = "false";
+  }
 }
 
 document.querySelectorAll("[data-case]").forEach((button) => {
   button.addEventListener("click", async () => {
     document.querySelectorAll("[data-case]").forEach((candidate) => candidate.classList.remove("active"));
     button.classList.add("active");
-    await loadCase(button.dataset.case);
+    try {
+      await loadCase(button.dataset.case);
+    } catch (error) {
+      elements.project.textContent = error.message;
+    }
   });
 });
 
 document.querySelector("#open-audit").addEventListener("click", async () => {
   elements.auditError.textContent = "";
-  if (!elements.evidenceInput.value) {
-    const response = await fetch("/sample-evidence.json");
-    elements.evidenceInput.value = JSON.stringify(await response.json(), null, 2);
-  }
   elements.dialog.showModal();
   elements.evidenceInput.focus();
+  if (!elements.evidenceInput.value) {
+    try {
+      const response = await fetch("/sample-evidence.json");
+      if (!response.ok) throw new Error("Sample unavailable");
+      elements.evidenceInput.value = JSON.stringify(await response.json(), null, 2);
+    } catch {
+      elements.auditError.textContent = "Sample unavailable. Paste your own evidence JSON to continue.";
+    }
+  }
 });
 
 document.querySelector("#close-audit").addEventListener("click", () => elements.dialog.close());
@@ -159,7 +171,7 @@ elements.form.addEventListener("submit", async (event) => {
     document.querySelector("[data-custom]").classList.add("active");
     renderReceipt(result);
     elements.dialog.close();
-    window.scrollTo({ top: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   } catch (error) {
     elements.auditError.textContent = error.message;
   } finally {

@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:20,000
+A green build is not a shippable game. PlayReceipt turns reliability, balance, accessibility, and human-play evidence into a stable release receipt.
+
+2
+00:00:20,000 --> 00:00:47,000
+The real read-only snapshot ran 2,000 seeded simulations without crashes or stalls, but weak strategy separation, missing reduced motion, and no human fun calibration keep the verdict at REPAIR.
+
+3
+00:00:47,000 --> 00:01:07,000
+The repaired sandbox passes seven machine-verifiable gates with no missing inputs. PlayReceipt still stops at HUMAN REVIEW because simulation cannot certify fun.
+
+4
+00:01:07,000 --> 00:01:27,000
+Identical evidence produces an identical SHA-256 receipt. Meaningful CLI exit codes, seven regression tests, and a repository-local Codex skill make the decision reproducible.
+
+5
+00:01:27,000 --> 00:01:41,000
+PlayReceipt is new OpenAI Build Week work. Try the live deployment and inspect every claim in the public repository.

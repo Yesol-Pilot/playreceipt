@@ -10,7 +10,7 @@ PlayReceipt is an evidence gate for AI-built games. It converts reliability, bal
 
 **Build Week submission:** [devpost.com/software/playreceipt](https://devpost.com/software/playreceipt)
 
-![PlayReceipt desktop audit](docs/evidence/browser/playreceipt-desktop.png)
+![PlayReceipt judge-supplied receipt and four-stage boundary](docs/demo/playreceipt-uplift-gallery-1280.png)
 
 ## Why it exists
 

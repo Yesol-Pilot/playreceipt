@@ -26,6 +26,10 @@ test("repaired sandbox remains HUMAN_REVIEW instead of inventing fun evidence", 
 test("receipt id is stable for the same evidence", () => {
   const input = simulationToAuditInput(simulatePolicies({ mode: "repaired", seed: 77 }));
   assert.equal(auditGameEvidence(input).receiptId, auditGameEvidence(input).receiptId);
+
+  const firstOrder = { project: "canonical", evidence: [{ path: "proof.json", gate: "reliability" }] };
+  const secondOrder = { project: "canonical", evidence: [{ gate: "reliability", path: "proof.json" }] };
+  assert.equal(auditGameEvidence(firstOrder).receiptId, auditGameEvidence(secondOrder).receiptId);
 });
 
 test("missing evidence is UNVERIFIED, never PASS", () => {

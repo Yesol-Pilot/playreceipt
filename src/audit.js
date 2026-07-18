@@ -14,6 +14,14 @@ function gate(id, label, verdict, observed, threshold, evidence, repair = null) 
   return { id, label, verdict, observed, threshold, evidence, repair };
 }
 
+function canonicalValue(value) {
+  if (Array.isArray(value)) return value.map(canonicalValue);
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(
+    Object.keys(value).sort().map((key) => [key, canonicalValue(value[key])]),
+  );
+}
+
 function policyStats(policyWinrates = []) {
   if (!Array.isArray(policyWinrates)) return null;
   const valid = policyWinrates.filter(
@@ -70,7 +78,9 @@ export function auditGameEvidence(input) {
   const accessibility = input.metrics?.accessibility ?? {};
   const balance = policyStats(input.metrics?.balance?.policyWinrates);
   const evidence = Array.isArray(input.evidence)
-    ? input.evidence.filter((item) => item && typeof item === "object")
+    ? input.evidence
+      .filter((item) => item && typeof item === "object")
+      .map(canonicalValue)
     : [];
   const gates = [];
 

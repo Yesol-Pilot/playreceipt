@@ -24,7 +24,8 @@
     "docs/demo/CAPTIONS_V2.srt": "f012a1513391589aaea872c5df336a293b71cb5e593369127a42bf5b9f5de40d",
     "docs/demo/VOICEOVER.txt": "18bb005cd8277fc8d96e1d579bc63376e90f7e6cc8ebfc8fd9ce5f61437568a0",
     "docs/demo/playreceipt-uplift-ci.png": "f5ee93354c61339e440d950d94ef918d82d5016f43668e702b8a45795e517754",
-    "docs/demo/playreceipt-uplift-final.png": "3605f55dd4c060c748196d7143c4b6934aa39f4e144aaeada0ac2f3f922eb238"
+    "docs/demo/playreceipt-uplift-final.png": "3605f55dd4c060c748196d7143c4b6934aa39f4e144aaeada0ac2f3f922eb238",
+    "docs/demo/playreceipt-uplift-v3-thumbnail-1280.png": "c4f9ec8bf63864c32c010b89c16701f77577ecb9ddeb9460cc2341d02cb1e22b"
   },
   "qualityChecks": {
     "underThreeMinutes": true,
@@ -36,7 +37,13 @@
     "codexAndGpt56Explained": true,
     "copyrightedMusicIncluded": false,
     "thirdPartyTrademarkFootageIncluded": false,
-    "staleTenTestClaimRemoved": true
+    "staleTenTestClaimRemoved": true,
+    "thumbnail": {
+      "width": 1280,
+      "height": 720,
+      "sizeBytes": 200190,
+      "visuallyInspected": true
+    }
   },
   "sourcePreservation": {
     "originalPublicVideoPreserved": "https://youtu.be/9M4A2hQYgps",

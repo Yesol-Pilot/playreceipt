@@ -68,7 +68,11 @@
       "newVideoEmbed": true,
       "judgeSuppliedJsonFlow": true,
       "elevenRegressionTests": true,
-      "githubActionPath": true
+      "githubActionPath": true,
+      "galleryImages": 8,
+      "newEvidenceImages": 5,
+      "galleryCaptionsVerified": true,
+      "galleryVerificationDate": "2026-07-19"
     }
   },
   "verdict": "PASS"

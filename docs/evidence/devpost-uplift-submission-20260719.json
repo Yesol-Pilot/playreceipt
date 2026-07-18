@@ -19,7 +19,10 @@
     "githubActionPath": true,
     "liveLink": true,
     "repositoryLink": true,
-    "galleryImagesPreserved": 3
+    "galleryImages": 8,
+    "newEvidenceImages": 5,
+    "galleryCaptionsVerified": true,
+    "galleryVerificationDate": "2026-07-19"
   },
   "judgeInstructionsUpdated": true,
   "verdict": "PASS"

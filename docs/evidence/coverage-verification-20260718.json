@@ -1,0 +1,27 @@
+{
+  "schema": "playreceipt.coverage-verification.v1",
+  "verifiedAt": "2026-07-18T15:26:00+09:00",
+  "head": "1257ef5f879485bc119acd5e098a31ddfe9c5a24",
+  "runtime": "node v22.12.0",
+  "command": "node --experimental-test-coverage --test",
+  "tests": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0
+  },
+  "coverage": {
+    "linePercent": 96.52,
+    "branchPercent": 84.25,
+    "functionPercent": 96.39
+  },
+  "contractProof": [
+    "Vercel POST deep-equals direct audit engine output",
+    "Vercel rejects non-JSON and payloads over 64 KiB",
+    "Vercel GET, 404, and 405 paths execute in tests",
+    "GitHub Action blocks REPAIR and UNVERIFIED",
+    "GitHub Action preserves HUMAN_REVIEW as a successful warning",
+    "Action executes from an external consumer workspace",
+    "receipt IDs remain stable across evidence-object key order"
+  ],
+  "verdict": "PASS"
+}

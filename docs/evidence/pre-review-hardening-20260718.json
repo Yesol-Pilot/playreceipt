@@ -1,7 +1,7 @@
 {
   "schema": "playreceipt.pre-review-hardening.v1",
-  "auditedAt": "2026-07-18T16:25:48+09:00",
-  "head": "87c402a3166b7cddbd9241b5f3bbdf715e6b4101",
+  "auditedAt": "2026-07-18T17:23:57+09:00",
+  "head": "350ece3dc07eafdac141d43227079cf59ebfa429",
   "repairs": [
     {
       "commit": "b664d00",
@@ -52,14 +52,19 @@
       "commit": "87c402a",
       "finding": "The prior mobile gallery artifact was a stale narrow-strip capture and did not prove its 390px usability claim.",
       "repair": "A real 390px Playwright flow now proves zero horizontal overflow, custom POST parity, all eight gates, the four-stage trail, copy execution, and zero console errors."
+    },
+    {
+      "commit": "350ece3",
+      "finding": "The public request-limit and JSON media-type claims were broader than the Vercel adapter's executable boundary proof.",
+      "repair": "Both HTTP adapters now share an exact JSON media-type rule; Vercel checks Content-Length before parsing and independently caps the parsed payload at 64 KiB."
     }
   ],
   "verification": {
     "windowsCurrent": "11/11 PASS",
     "windowsNode20": "11/11 PASS",
     "linuxWsl": "11/11 PASS",
-    "lineCoveragePercent": 96.52,
-    "functionCoveragePercent": 96.39,
+    "lineCoveragePercent": 96.77,
+    "functionCoveragePercent": 96.47,
     "brokenReceiptIdPreserved": "3d0c9c78cfd46954",
     "repairedReceiptIdPreserved": "29798c9e9f81686b",
     "secretScan": "PASS with 0 findings"

@@ -1,0 +1,30 @@
+{
+  "schema": "playreceipt.request-boundary-verification.v1",
+  "verifiedAt": "2026-07-18T17:23:57+09:00",
+  "head": "350ece3dc07eafdac141d43227079cf59ebfa429",
+  "contract": {
+    "acceptedMediaTypes": [
+      "application/json",
+      "application/*+json"
+    ],
+    "rejectedExample": "text/plain; note=application/json",
+    "maximumBytes": 65536,
+    "sizeEnforcement": [
+      "Content-Length is rejected before Vercel body handling when it exceeds the cap",
+      "the serialized parsed payload is independently rejected when it exceeds the cap",
+      "the local Node adapter counts streamed request bytes before parsing"
+    ],
+    "persistence": "The repository contains no database or submission-history write path; responses use cache-control: no-store."
+  },
+  "verification": {
+    "windowsCurrent": "11/11 PASS",
+    "windowsNode20": "11/11 PASS",
+    "linuxWsl": "11/11 PASS",
+    "lineCoveragePercent": 96.77,
+    "branchCoveragePercent": 84.10,
+    "functionCoveragePercent": 96.47,
+    "secretScan": "PASS with 0 findings"
+  },
+  "publicWritesExecuted": false,
+  "verdict": "READY_FOR_INDEPENDENT_REVIEW"
+}

@@ -32,6 +32,7 @@ For the mobile and schema claims, explicitly inspect:
 
 - `docs/evidence/browser-mobile-verification-20260718.json` and its referenced raw/full-page and 16:9 assets;
 - `docs/evidence/schema-validation-20260718.json` against the actual public schema and engine behavior;
+- `docs/evidence/request-boundary-verification-20260718.json` against both HTTP adapters and their tests;
 - whether the prior stale mobile artifact has been truthfully replaced rather than hidden behind narrative.
 
 Inspect the actual diff from `origin/main..HEAD`, all relevant files, and test output. Return Korean, conclusion first.

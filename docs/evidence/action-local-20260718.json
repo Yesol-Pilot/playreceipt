@@ -1,0 +1,36 @@
+{
+  "schema": "playreceipt.action-evidence.v1",
+  "checkedAt": "2026-07-18T14:24:00+09:00",
+  "runner": "local Node.js action entrypoint",
+  "action": "action.yml -> src/action.js -> src/audit.js",
+  "cases": [
+    {
+      "input": "examples/repaired-evidence.json",
+      "inputSha256": "149fae900bd8749185ce2f911890f203b79f67787040fec14296d5b39325b417",
+      "exitCode": 0,
+      "outputs": {
+        "verdict": "HUMAN_REVIEW",
+        "receipt-id": "29798c9e9f81686b"
+      },
+      "annotation": "warning: Human fun calibration",
+      "boundary": "Successful CI step with an explicit warning; no self-PASS."
+    },
+    {
+      "input": "examples/overclock-20260717.json",
+      "inputSha256": "ff9283c75a3f7998032cdb1ecd03d546b96ac3f4c74b3e71d32476a61c26e760",
+      "exitCode": 1,
+      "outputs": {
+        "verdict": "REPAIR",
+        "receipt-id": "3d0c9c78cfd46954"
+      },
+      "annotations": [
+        "error: Policy separation",
+        "error: Strategy beats random play",
+        "error: Reduced-motion control",
+        "warning: Human fun calibration"
+      ],
+      "boundary": "Repair evidence blocks CI."
+    }
+  ],
+  "verdict": "PASS"
+}

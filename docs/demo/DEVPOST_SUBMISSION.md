@@ -41,6 +41,8 @@ We used Codex and GPT-5.6 to turn the release decision into one deterministic No
 
 The implementation has no runtime npm dependencies. Ten regression tests cover missing evidence, stable receipts, documented command forms, POST abuse boundaries, Vercel adapter parity, GitHub Action semantics, static-path boundaries, and the live HTTP dashboard. The public Vercel deployment and every source claim are independently inspectable.
 
+Codex was the engineering control loop, not a decorative tool. It challenged an early single-score direction, helped lock the four-verdict contract, implemented each adapter against one engine, drove browser QA at desktop and 390px, and turned adversarial review findings into permanent regression tests. We made the key product choice to keep fun outside machine `PASS`, the key architecture choice to make receipts content-addressed, and the key design choice to present a forensic ledger instead of a generic dashboard.
+
 ## Challenges
 
 The hard part was not generating more metrics; it was preserving epistemic boundaries. Reliability evidence must not become a claim about fun. A repaired machine-verifiable state must not silently become `PASS`. Existing game evidence also had to remain isolated, read-only, and clearly separated from new Build Week work.
@@ -60,6 +62,8 @@ Independent review found two real defects in the documented CLI and HTTP path ha
 ## What we learned
 
 The most useful developer tool is sometimes a refusal to overclaim. Separating `HUMAN_REVIEW` from `PASS`, and `UNVERIFIED` from `REPAIR`, makes AI-assisted development more trustworthy and more actionable.
+
+For a judge, the value is testable in under thirty seconds: paste the bundled evidence, issue a receipt, copy its JSON, and then run the same file through the GitHub Action. The receipt ID and verdict remain consistent because the UI and CI do not have separate truth systems.
 
 ## What's next
 

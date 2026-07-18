@@ -82,6 +82,18 @@ The sandbox is a self-contained demonstration. It is not presented as a repair t
 
 The repository includes a project skill at `.codex/skills/playreceipt/SKILL.md`. Codex can normalize a game's evidence, call the CLI or CI action, interpret exit codes, preserve the source, turn only failed machine gates into a repair plan, and rerun the same seeds after a repair. This keeps the tool useful beyond its visual dashboard.
 
+### How Codex and GPT-5.6 shaped the project
+
+This was not a one-prompt code generation exercise. The primary Codex thread acted as the product and engineering loop:
+
+1. **Product decision:** Codex challenged the original “release score” direction because one number would blur missing evidence and subjective fun. We locked four verdicts—`PASS`, `REPAIR`, `HUMAN_REVIEW`, and `UNVERIFIED`—before implementation.
+2. **Engineering acceleration:** GPT-5.6 implemented the dependency-free audit engine, seeded simulator, CLI, HTTP/Vercel adapters, browser interface, and GitHub Action. Every surface imports the same `src/audit.js` rather than copying verdict logic.
+3. **Design decision:** We rejected a generic analytics dashboard. The final interface is a forensic receipt: observed claim, explicit threshold, source path, minimum repair, and the point where automation must stop.
+4. **Audit → repair → re-audit:** Independent adversarial review found real CLI argument and HTTP path defects. Codex repaired them, converted each finding into a regression test, and reran the same cases. The 120-point uplift then added judge-supplied JSON, exact receipt handoff, abuse boundaries, and CI behavior—with another review gate before release.
+5. **Evidence discipline:** The pre-existing game contributes only three hashed, read-only evidence files. Dated commits, browser readbacks, deterministic receipts, and the primary Session ID distinguish Build Week work from prior source material.
+
+The result is a working example of Codex as an engineering control loop: specify the claim, build the smallest executable proof, attack it, repair it, and preserve the receipt.
+
 ## Build Week provenance
 
 PlayReceipt is new work created for OpenAI Build Week in the Developer Tools track. The existing game contributes only the three read-only evidence artifacts under `examples/source/overclock/`. Product intent, implementation, simulations, UI, tests, receipts, and documentation are new work in this repository.
@@ -91,6 +103,7 @@ PlayReceipt is new work created for OpenAI Build Week in the Developer Tools tra
 - Judging strategy: [RUBRIC.md](RUBRIC.md)
 - Architecture decision and source boundary: [DECISION_RECORD.md](DECISION_RECORD.md)
 - Deterministic receipts: [`docs/evidence/`](docs/evidence/)
+- Local GitHub Action pass/block receipt: [`docs/evidence/action-local-20260718.json`](docs/evidence/action-local-20260718.json)
 - Live deployment receipt: [`docs/evidence/deployment-20260718.json`](docs/evidence/deployment-20260718.json)
 - Public video receipt: [`docs/evidence/video-20260718.json`](docs/evidence/video-20260718.json)
 - Devpost submission receipt: [`docs/evidence/devpost-submission-20260718.json`](docs/evidence/devpost-submission-20260718.json)

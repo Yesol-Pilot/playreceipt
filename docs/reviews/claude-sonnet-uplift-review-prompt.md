@@ -12,6 +12,8 @@ Upgrade the submitted OpenAI Build Week Developer Tools entry from a polished sh
 - one deterministic engine across browser, API, CLI, Codex skill, and GitHub Action;
 - CI blocks `REPAIR`/`UNVERIFIED` without converting `HUMAN_REVIEW` into `PASS`;
 - public schema and 30-second testing path;
+- standards-validator proof for the tolerant partial-input schema;
+- true 390px browser readback with zero horizontal overflow and a separate 16:9 gallery asset;
 - truthful new-work and Codex/GPT-5.6 provenance;
 - no regression in the original real-evidence and repaired-sandbox cases.
 
@@ -25,6 +27,12 @@ Upgrade the submitted OpenAI Build Week Developer Tools entry from a polished sh
 6. Browser flow clarity, accessibility, mobile rendering, copy/download truthfulness, and 30-second judge path.
 7. Test coverage: confirm tests actually prove the claims they are used to support.
 8. Submission truth: prior-source separation, Codex/GPT-5.6 collaboration claims, and no unsupported self-approval.
+
+For the mobile and schema claims, explicitly inspect:
+
+- `docs/evidence/browser-mobile-verification-20260718.json` and its referenced raw/full-page and 16:9 assets;
+- `docs/evidence/schema-validation-20260718.json` against the actual public schema and engine behavior;
+- whether the prior stale mobile artifact has been truthfully replaced rather than hidden behind narrative.
 
 Inspect the actual diff from `origin/main..HEAD`, all relevant files, and test output. Return Korean, conclusion first.
 

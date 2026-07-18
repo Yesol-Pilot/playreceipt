@@ -1,0 +1,25 @@
+{
+  "schema": "playreceipt.runtime-verification.v1",
+  "checkedAt": "2026-07-18T14:33:00+09:00",
+  "environment": {
+    "platform": "Linux under WSL",
+    "node": "v22.22.3",
+    "repositoryMount": "/mnt/d/00.test/007.infra-tools/011.game-evidence-gate"
+  },
+  "command": "node --test",
+  "results": {
+    "tests": 11,
+    "passed": 11,
+    "failed": 0,
+    "durationMs": 629.593459
+  },
+  "coveredBoundaries": [
+    "GitHub Action pass and block exit semantics",
+    "GitHub expression syntax regression",
+    "Vercel adapter parity",
+    "deterministic receipt stability",
+    "missing evidence remains UNVERIFIED",
+    "Linux static path and HTTP behavior"
+  ],
+  "verdict": "PASS"
+}

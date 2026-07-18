@@ -118,6 +118,7 @@ PlayReceipt is new work created for OpenAI Build Week in the Developer Tools tra
 - Architecture decision and source boundary: [DECISION_RECORD.md](DECISION_RECORD.md)
 - Deterministic receipts: [`docs/evidence/`](docs/evidence/)
 - Local GitHub Action pass/block receipt: [`docs/evidence/action-local-20260718.json`](docs/evidence/action-local-20260718.json)
+- Linux/WSL 11-test portability receipt: [`docs/evidence/linux-wsl-verification-20260718.json`](docs/evidence/linux-wsl-verification-20260718.json)
 - Live deployment receipt: [`docs/evidence/deployment-20260718.json`](docs/evidence/deployment-20260718.json)
 - Public video receipt: [`docs/evidence/video-20260718.json`](docs/evidence/video-20260718.json)
 - Devpost submission receipt: [`docs/evidence/devpost-submission-20260718.json`](docs/evidence/devpost-submission-20260718.json)

@@ -1,0 +1,39 @@
+{
+  "schema": "playreceipt.devpost-gallery.v1",
+  "checkedAt": "2026-07-18T15:04:00+09:00",
+  "assets": [
+    {
+      "order": 1,
+      "path": "docs/demo/playreceipt-uplift-v3-thumbnail-1280.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c4f9ec8bf63864c32c010b89c16701f77577ecb9ddeb9460cc2341d02cb1e22b",
+      "caption": "A green build can still earn REPAIR."
+    },
+    {
+      "order": 2,
+      "path": "docs/evidence/browser/playreceipt-uplift-dialog.png",
+      "caption": "Paste judge-supplied evidence. No account, no upload history."
+    },
+    {
+      "order": 3,
+      "path": "docs/demo/playreceipt-uplift-gallery-1280.png",
+      "width": 1280,
+      "height": 720,
+      "sizeBytes": 489429,
+      "sha256": "44a9bc9c1d410223c1526f08f13a40829bedd706084213af5dfa516a17012e4a",
+      "caption": "Exact receipt plus the ingest-to-human-boundary trail."
+    },
+    {
+      "order": 4,
+      "path": "docs/demo/playreceipt-uplift-ci.png",
+      "caption": "One deterministic engine across browser, API, CLI, and GitHub Action."
+    },
+    {
+      "order": 5,
+      "path": "docs/evidence/browser/playreceipt-uplift-mobile.png",
+      "caption": "The complete evidence ledger remains usable at 390px."
+    }
+  ],
+  "verdict": "READY_FOR_INDEPENDENT_REVIEW"
+}

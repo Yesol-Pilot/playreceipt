@@ -47,7 +47,7 @@ Codex was the engineering control loop, not a decorative tool. It challenged an 
 
 The hard part was not generating more metrics; it was preserving epistemic boundaries. Reliability evidence must not become a claim about fun. A repaired machine-verifiable state must not silently become `PASS`. Existing game evidence also had to remain isolated, read-only, and clearly separated from new Build Week work.
 
-Independent review found two real defects in the documented CLI and HTTP path handling. We repaired both, converted them into regression tests, and reran the full suite. The final independent review scored the result 90/100 and passed all P0/P1 gates.
+Independent review of the base submission found two real defects in the documented CLI and HTTP path handling. We repaired both, converted them into regression tests, and reran the full suite; that base version then received a 90/100 independent review. The interactive/CI uplift is tracked as a separate P2 gate and is not represented as reviewed until its current commit range passes a fresh read-only review.
 
 ## Accomplishments
 

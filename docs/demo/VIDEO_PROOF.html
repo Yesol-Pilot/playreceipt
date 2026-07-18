@@ -39,6 +39,16 @@
     .thumb-counts { border-top:1px solid #35464d; padding-top:20px; color:#f6f1e7; font:19px Consolas,monospace; }
     .thumb-counts b { color:#e6ff47; }
     .thumb-tag { position:absolute; left:72px; bottom:62px; color:#e6ff47; font:24px Consolas,monospace; letter-spacing:.02em; }
+    #gallery { display:none; padding:54px 64px; }
+    #gallery:target { display:grid; grid-template-columns:42% 58%; gap:34px; }
+    .gallery-copy h1 { margin-top:24px; font-size:67px; line-height:.92; }
+    .gallery-copy p { max-width:460px; color:#a8b8be; font-size:22px; line-height:1.35; }
+    .gallery-stages { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:32px; }
+    .gallery-stage { border-top:2px solid #e6ff47; background:#102027; padding:14px 16px; }
+    .gallery-stage b { display:block; color:#e6ff47; font:14px Consolas,monospace; }
+    .gallery-stage span { display:block; margin-top:6px; color:#d7e0e3; font-size:16px; }
+    .gallery-shot { align-self:center; height:610px; overflow:hidden; border:1px solid #40545c; box-shadow:0 30px 80px #0009; background:#081013; }
+    .gallery-shot img { width:100%; height:auto; display:block; transform:translateY(-8px); }
   </style>
 </head>
 <body>
@@ -80,6 +90,21 @@
       <div class="thumb-counts"><b>4 PASS</b> · 3 REPAIR · 1 HUMAN</div>
     </div>
     <div class="thumb-tag">Evidence, not vibes.</div>
+  </section>
+
+  <section id="gallery" class="scene">
+    <div class="gallery-copy">
+      <div class="eyebrow">Judge-supplied evidence</div>
+      <h1>One receipt.<br><span class="accent">Four boundaries.</span></h1>
+      <p>Paste JSON, issue a deterministic receipt, and see exactly where machine repair ends and human judgment begins.</p>
+      <div class="gallery-stages">
+        <div class="gallery-stage"><b>01 INGEST</b><span>Source sealed</span></div>
+        <div class="gallery-stage"><b>02 JUDGE</b><span>Rules executed</span></div>
+        <div class="gallery-stage"><b>03 REPAIR</b><span>Only failed gates</span></div>
+        <div class="gallery-stage"><b>04 HUMAN</b><span>No self-PASS</span></div>
+      </div>
+    </div>
+    <div class="gallery-shot"><img src="../evidence/browser/playreceipt-uplift-custom.png" alt="PlayReceipt custom evidence receipt"></div>
   </section>
 </body>
 </html>

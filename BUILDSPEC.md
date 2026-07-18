@@ -12,6 +12,10 @@ This repository is new work created during OpenAI Build Week. It uses one read-o
 - Stable SHA-256 receipt IDs for identical evidence and rules.
 - Three inspectable cases: real project evidence, broken sandbox, repaired sandbox.
 - No hidden network dependency for the audit engine or dashboard data.
+- Credential-free **Audit your evidence** workflow accepting a game-evidence JSON document up to 64 KiB.
+- Copyable and downloadable JSON receipt produced from the exact audited input.
+- Visible audit trail separating evidence ingestion, deterministic judgment, repair plan, and human boundary.
+- Repository-root GitHub Action exposing `verdict` and `receipt-id` outputs and failing CI on `REPAIR` or `UNVERIFIED`.
 
 ## Gate contract
 
@@ -33,6 +37,9 @@ This repository is new work created during OpenAI Build Week. It uses one read-o
 - Deterministic seeded simulation.
 - JSON is both the input and receipt interchange format.
 - Source evidence remains unmodified and is copied with provenance.
+- POST audit requests reject non-JSON, malformed, or oversized bodies without persisting input.
+- Browser, CLI, API, and GitHub Action use the same `auditGameEvidence` implementation.
+- Downloaded receipts contain no hidden score or invented evidence.
 
 ## Demo acceptance
 
@@ -41,3 +48,11 @@ This repository is new work created during OpenAI Build Week. It uses one read-o
 3. `npm run simulate:repaired` exits with code 4 and emits `HUMAN_REVIEW`.
 4. Repeating an audit produces the same receipt ID.
 5. Dashboard interactions work at desktop and mobile widths without console errors.
+6. A valid custom POST returns the same receipt as direct engine invocation.
+7. Malformed and oversized custom POST requests fail closed.
+8. The GitHub Action writes stable outputs and emits CI annotations for failed gates.
+9. A judge can complete paste → audit → copy or download in under 30 seconds without authentication.
+
+## 120-point uplift boundary
+
+The uplift does not add a synthetic score, auto-fabricate repaired evidence, or claim universal rule coverage. It makes the existing epistemic boundary operational across live UI, API, CLI, Codex skill, and CI. The original submitted video and evidence remain preserved; upgraded artifacts receive new versioned paths and URLs.

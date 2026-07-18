@@ -46,6 +46,17 @@ function overallVerdict(gates) {
   return PASS;
 }
 
+function buildRepairPlan(gates) {
+  return gates
+    .filter((item) => item.verdict === REPAIR || item.verdict === UNVERIFIED)
+    .map((item) => ({
+      gateId: item.id,
+      label: item.label,
+      verdict: item.verdict,
+      action: item.repair,
+    }));
+}
+
 export function auditGameEvidence(input) {
   if (!input || typeof input !== "object") throw new TypeError("Audit input must be an object");
   if (!input.project || typeof input.project !== "string") throw new TypeError("project is required");
@@ -165,6 +176,14 @@ export function auditGameEvidence(input) {
   ));
 
   const verdict = overallVerdict(gates);
+  const counts = {
+    pass: gates.filter((item) => item.verdict === PASS).length,
+    repair: gates.filter((item) => item.verdict === REPAIR).length,
+    humanReview: gates.filter((item) => item.verdict === HUMAN_REVIEW).length,
+    unverified: gates.filter((item) => item.verdict === UNVERIFIED).length,
+  };
+  const repairPlan = buildRepairPlan(gates);
+  const humanGate = gates.find((item) => item.id === "human.fun");
   const canonical = JSON.stringify({ project: input.project, checkedAt: input.checkedAt, gates });
   const receiptId = createHash("sha256").update(canonical).digest("hex").slice(0, 16);
 
@@ -175,14 +194,32 @@ export function auditGameEvidence(input) {
     checkedAt: input.checkedAt ?? null,
     sourceKind: input.sourceKind ?? "unknown",
     verdict,
-    counts: {
-      pass: gates.filter((item) => item.verdict === PASS).length,
-      repair: gates.filter((item) => item.verdict === REPAIR).length,
-      humanReview: gates.filter((item) => item.verdict === HUMAN_REVIEW).length,
-      unverified: gates.filter((item) => item.verdict === UNVERIFIED).length,
-    },
+    counts,
     balance,
     gates,
+    repairPlan,
+    trail: [
+      {
+        stage: "INGEST",
+        state: "SEALED",
+        detail: `${evidence.length} provenance ${evidence.length === 1 ? "entry" : "entries"}; source remains unchanged.`,
+      },
+      {
+        stage: "JUDGE",
+        state: verdict,
+        detail: `${counts.pass} pass · ${counts.repair} repair · ${counts.unverified} missing.`,
+      },
+      {
+        stage: "REPAIR PLAN",
+        state: repairPlan.length ? "OPEN" : "CLEAR",
+        detail: repairPlan.length ? `${repairPlan.length} minimum credible ${repairPlan.length === 1 ? "action" : "actions"}.` : "No machine repair is requested.",
+      },
+      {
+        stage: "HUMAN BOUNDARY",
+        state: humanGate?.verdict ?? UNVERIFIED,
+        detail: humanGate?.verdict === PASS ? "Recorded human play evidence supplied." : "Automation does not certify fun.",
+      },
+    ],
     caveat: "A receipt reports only the supplied evidence. It is not a release approval.",
   };
 }

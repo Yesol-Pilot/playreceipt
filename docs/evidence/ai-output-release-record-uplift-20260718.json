@@ -1,0 +1,88 @@
+{
+  "schema": "neo.ai_output_release_record.v1",
+  "artifact_id": "playreceipt-build-week-uplift-20260718",
+  "artifact_path_or_url": "https://playreceipt.vercel.app",
+  "artifact_class": "ui_and_code",
+  "exposure_class": "public",
+  "audience_and_territories": ["OpenAI Build Week judges", "global developer audience"],
+  "creative_intent": {
+    "purpose": "Let judges audit their own game evidence and receive an inspectable boundary-aware receipt.",
+    "audience": "Developers and hackathon judges evaluating AI-built games.",
+    "voice_or_art_direction": "Forensic editorial interface; evidence ledger rather than generic analytics dashboard.",
+    "deliberate_distinctive_choices": [
+      "Build passed. Game failed. thesis",
+      "four non-numeric verdicts",
+      "visible ingest-to-human-boundary trail",
+      "no self-PASS for fun"
+    ],
+    "directions_explored": ["static three-case showcase", "judge-supplied live audit plus CI gate"]
+  },
+  "ai_assistance_internal_provenance": {
+    "tools_or_models": ["Codex", "GPT-5.6"],
+    "generation_or_edit_stages": ["product specification", "implementation", "tests", "browser QA"],
+    "source_or_reference_paths": ["PRODUCT_INTENT.md", "BUILDSPEC.md", "DECISION_RECORD.md"]
+  },
+  "human_accountability": {
+    "compatibility_note": "Legacy field name; responsible_editor is the authorized agent final validator unless an exact external requirement requires a human actor.",
+    "responsible_editor": "Codex main conductor and final validator",
+    "review_route": "AGENT_FINAL_VALIDATOR_PLUS_INDEPENDENT_CLAUDE_GATE",
+    "external_human_action_required": false,
+    "external_human_action_basis": "No real-person, regulated, or high-impact claim; contest rules require truthful Codex provenance rather than human-only approval.",
+    "reviewed_at": "2026-07-18T14:05:00+09:00",
+    "material_edits_or_acceptance_rationale": [
+      "Added credential-free 64 KiB JSON audit with no submission history.",
+      "Added copy/download receipt handoff and visible audit trail.",
+      "Added dependency-free GitHub Action sharing the same audit engine."
+    ],
+    "final_readback_evidence": [
+      "docs/evidence/browser/playreceipt-uplift-dialog.png",
+      "docs/evidence/browser/playreceipt-uplift-custom.png",
+      "docs/evidence/browser/playreceipt-uplift-mobile.png",
+      "npm test: 10/10 PASS"
+    ]
+  },
+  "facts_rights_and_consent": {
+    "claim_evidence_paths": ["README.md", "docs/evidence/", "test/"],
+    "license_or_source_evidence": ["LICENSE", "DECISION_RECORD.md"],
+    "likeness_or_voice_consent_evidence": [],
+    "open_issues": []
+  },
+  "disclosure_assessment": {
+    "actor_role": "ordinary creation-tool user and hackathon entrant",
+    "jurisdictions_checked": ["Korea", "United States", "global public web"],
+    "official_legal_sources_checked_at_release": [
+      "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0031&lsiSeq=282791&urlMode=lsScJoRltInfoR"
+    ],
+    "platform_policy_sources_checked_at_release": [
+      "https://openai.devpost.com/rules",
+      "https://openai.devpost.com/details/faqs"
+    ],
+    "contract_or_client_requirements": [
+      "README must explain Codex collaboration.",
+      "Demo video must explain Codex and GPT-5.6 use.",
+      "Submission must provide the primary Codex Session ID."
+    ],
+    "material_deception_risk": "Low; the repository and submission explicitly state Codex and GPT-5.6 provenance and preserve pre-existing evidence boundaries.",
+    "decision": "PLATFORM_OR_CONTRACT_REQUIRED",
+    "decision_rationale": "Build Week requires explicit Codex/GPT-5.6 collaboration evidence; README and submission materials carry that disclosure. No additional generic AI label is required inside the product UI.",
+    "public_label_or_control_applied": "Codex/GPT-5.6 provenance in README, demo narration, and Devpost submission fields.",
+    "machine_readable_provenance": "Git history, primary Codex Session ID, and internal release record."
+  },
+  "quality_evidence": {
+    "medium_specific_checklist": [
+      "product-specific information architecture",
+      "loading and error states",
+      "mobile overflow check at 390px",
+      "deterministic tests",
+      "truthful human-review boundary"
+    ],
+    "render_playback_device_or_runtime_evidence": [
+      "desktop custom-audit screenshot",
+      "mobile full-page screenshot",
+      "copied-state=1 browser interaction readback"
+    ],
+    "independent_review_evidence": [],
+    "remaining_defects": ["Independent Claude re-review pending after weekly limit resets at 20:00 KST."]
+  },
+  "verdict": "UNVERIFIED"
+}

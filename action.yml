@@ -1,0 +1,17 @@
+name: PlayReceipt Audit
+description: Turn game reliability, balance, accessibility, and human-play evidence into an honest CI verdict.
+branding:
+  icon: check-square
+  color: green
+inputs:
+  evidence:
+    description: Path to a PlayReceipt game-evidence JSON document.
+    required: true
+outputs:
+  verdict:
+    description: PASS, REPAIR, HUMAN_REVIEW, or UNVERIFIED.
+  receipt-id:
+    description: Stable SHA-256-derived receipt identifier.
+runs:
+  using: node20
+  main: src/action.js

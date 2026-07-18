@@ -33,11 +33,13 @@ PlayReceipt audits eight explicit gates across reliability, balance, accessibili
 
 The default case uses a real, read-only game evidence snapshot. It completed 2,000 deterministic runs with zero crashes and stalls, but weak strategy separation, missing reduced-motion proof, and no human fun calibration correctly keep it at `REPAIR`. A repaired sandbox passes seven machine-verifiable gates, yet still stops at `HUMAN_REVIEW` because automation cannot certify fun.
 
+Judges can also paste their own evidence JSON into the live app with no account. PlayReceipt returns a copyable and downloadable exact receipt plus an explicit `INGEST → JUDGE → REPAIR PLAN → HUMAN BOUNDARY` trail. Submissions are capped at 64 KiB and are not stored.
+
 ## How we built it
 
-We used Codex and GPT-5.6 to turn the release decision into a deterministic Node.js audit engine, CLI, seeded simulator, HTTP API, responsive evidence dashboard, and repository-local Codex skill. Identical canonical evidence produces an identical SHA-256 receipt ID. CLI exit codes make the verdict usable by agents and CI.
+We used Codex and GPT-5.6 to turn the release decision into one deterministic Node.js audit engine consumed by the CLI, seeded simulator, HTTP API, responsive dashboard, repository-local Codex skill, and dependency-free GitHub Action. Identical canonical evidence produces an identical SHA-256 receipt ID. The action fails CI on `REPAIR` or `UNVERIFIED`, while `HUMAN_REVIEW` remains a visible warning instead of a manufactured pass.
 
-The implementation has no runtime npm dependencies. Seven regression tests cover missing evidence, stable receipts, documented command forms, static-path boundaries, and the live HTTP dashboard. The public Vercel deployment and every source claim are independently inspectable.
+The implementation has no runtime npm dependencies. Ten regression tests cover missing evidence, stable receipts, documented command forms, POST abuse boundaries, Vercel adapter parity, GitHub Action semantics, static-path boundaries, and the live HTTP dashboard. The public Vercel deployment and every source claim are independently inspectable.
 
 ## Challenges
 
@@ -49,6 +51,8 @@ Independent review found two real defects in the documented CLI and HTTP path ha
 
 - A real evidence case that demonstrates why a green build can still be unshippable.
 - Stable, content-addressed receipts and CI-friendly exit codes.
+- A judge-supplied live JSON audit with an exact receipt handoff and no account.
+- A reusable GitHub Action powered by the same audit engine as the UI, API, and CLI.
 - Four verdicts that preserve missing evidence and human judgment.
 - A repository-local Codex skill that can normalize evidence and rerun the same audit after repair.
 - A public deployment, public source, public voiceover demo, deterministic tests, and independent review trail.
@@ -59,7 +63,7 @@ The most useful developer tool is sometimes a refusal to overclaim. Separating `
 
 ## What's next
 
-Next we will add adapters for common browser-game telemetry, signed receipt bundles for CI, configurable rule packs, and a human playtest capture workflow that can close the final calibration gate without weakening its provenance.
+Next we will add adapters for common browser-game telemetry, signed receipt bundles, configurable rule packs, and a human playtest capture workflow that can close the final calibration gate without weakening its provenance.
 
 ## Build Week provenance
 

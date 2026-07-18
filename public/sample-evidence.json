@@ -1,0 +1,26 @@
+{
+  "project": "Judge-supplied sample",
+  "checkedAt": "2026-07-18",
+  "sourceKind": "live_custom_audit",
+  "metrics": {
+    "reliability": { "runs": 2000, "crashes": 0, "stalls": 0 },
+    "balance": {
+      "policyWinrates": [
+        { "policy": "greedy", "winrate": 0.44 },
+        { "policy": "safe", "winrate": 0.32 },
+        { "policy": "random", "winrate": 0.23 }
+      ]
+    },
+    "accessibility": {
+      "minFontPx": 14,
+      "photosensitivityPromptBeforeCanvas": true,
+      "reducedMotion": true
+    }
+  },
+  "humanReview": { "funReviewed": false },
+  "evidence": [
+    { "gate": "reliability", "path": "judge://soak/seed-20260718" },
+    { "gate": "balance", "path": "judge://policies/identical-seeds" },
+    { "gate": "accessibility", "path": "judge://browser/reference-viewport" }
+  ]
+}

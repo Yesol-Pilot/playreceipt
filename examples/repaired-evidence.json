@@ -1,0 +1,26 @@
+{
+  "project": "Bring-your-own game evidence",
+  "checkedAt": "2026-07-18",
+  "sourceKind": "judge_supplied_sample",
+  "metrics": {
+    "reliability": { "runs": 2000, "crashes": 0, "stalls": 0 },
+    "balance": {
+      "policyWinrates": [
+        { "policy": "greedy", "winrate": 0.44 },
+        { "policy": "safe", "winrate": 0.32 },
+        { "policy": "random", "winrate": 0.23 }
+      ]
+    },
+    "accessibility": {
+      "minFontPx": 14,
+      "photosensitivityPromptBeforeCanvas": true,
+      "reducedMotion": true
+    }
+  },
+  "humanReview": { "funReviewed": false },
+  "evidence": [
+    { "gate": "reliability", "path": "ci://soak/seed-20260718" },
+    { "gate": "balance", "path": "ci://policies/identical-seeds" },
+    { "gate": "accessibility", "path": "ci://browser/reference-viewport" }
+  ]
+}

@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { once } from "node:events";
 import { createPlayReceiptServer } from "../src/http.js";
+import { readFile } from "node:fs/promises";
 
 test("local server serves the dashboard, assets, and computed API", async (context) => {
   const server = createPlayReceiptServer();
@@ -23,4 +24,37 @@ test("local server serves the dashboard, assets, and computed API", async (conte
   assert.match(script.headers.get("content-type"), /text\/javascript/);
   assert.equal(receipt.status, 200);
   assert.equal((await receipt.json()).verdict, "HUMAN_REVIEW");
+
+  const sample = await readFile(new URL("../examples/repaired-evidence.json", import.meta.url), "utf8");
+  const custom = await fetch(`${base}/api/receipt`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: sample,
+  });
+  assert.equal(custom.status, 200);
+  const customReceipt = await custom.json();
+  assert.equal(customReceipt.verdict, "HUMAN_REVIEW");
+  assert.equal(customReceipt.repairPlan.length, 0);
+
+  const malformed = await fetch(`${base}/api/receipt`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: "{nope",
+  });
+  assert.equal(malformed.status, 400);
+  assert.match((await malformed.json()).error, /valid JSON/);
+
+  const wrongType = await fetch(`${base}/api/receipt`, {
+    method: "POST",
+    headers: { "content-type": "text/plain" },
+    body: sample,
+  });
+  assert.equal(wrongType.status, 415);
+
+  const oversized = await fetch(`${base}/api/receipt`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ project: "x", padding: "x".repeat(70 * 1024) }),
+  });
+  assert.equal(oversized.status, 413);
 });

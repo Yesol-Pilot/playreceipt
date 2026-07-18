@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "2.0.0",
+  "project": "playreceipt",
+  "phase": "P2",
+  "phaseSlug": "INTERACTIVE_EVIDENCE_VERTICAL_SLICE",
+  "status": "READY_FOR_REVIEW",
+  "requiredArtifacts": [
+    "../../../src/request.js",
+    "../../../src/action.js",
+    "../../../action.yml",
+    "../../../public/index.html",
+    "../../../public/app.js"
+  ],
+  "gateEvidence": {
+    "sharedAuditEngine": "src/audit.js",
+    "browserAndApi": ["public/app.js", "src/http.js", "api/receipt.js"],
+    "githubAction": ["action.yml", "src/action.js", ".github/workflows/playreceipt.yml"],
+    "testSuite": ["test/audit.test.js", "test/http.test.js", "test/api-handler.test.js", "test/action.test.js"],
+    "browserReadback": [
+      "docs/evidence/browser/playreceipt-uplift-dialog.png",
+      "docs/evidence/browser/playreceipt-uplift-custom.png",
+      "docs/evidence/browser/playreceipt-uplift-mobile.png"
+    ]
+  },
+  "claudeReview": {
+    "required": true,
+    "artifact": null,
+    "verdict": "BLOCKED_WEEKLY_LIMIT_RESETS_20_00_KST"
+  },
+  "codexAdjudication": {
+    "artifact": null,
+    "verdict": "PENDING"
+  },
+  "paidActionsExecuted": false,
+  "productionWritesExecuted": false,
+  "publicWritesExecuted": false,
+  "accountMutationsExecuted": false
+}

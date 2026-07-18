@@ -26,6 +26,9 @@
           <button data-case="repaired">
             <span class="case-index">03</span><span><strong>Repaired sandbox</strong><small>Machine gates repaired</small></span>
           </button>
+          <button id="open-audit" data-custom>
+            <span class="case-index">04</span><span><strong>Audit your evidence</strong><small>Paste JSON · no account</small></span>
+          </button>
         </nav>
         <div class="rail-foot"><span>audit.v1</span><span>8 gates</span></div>
       </aside>
@@ -46,6 +49,10 @@
             <span>Verdict</span>
             <strong id="verdict">—</strong>
             <p id="verdict-reason">Evaluating supplied evidence.</p>
+            <div class="receipt-actions">
+              <button id="copy-receipt" class="receipt-action" type="button" disabled>Copy receipt JSON</button>
+              <button id="download-receipt" class="receipt-action" type="button" disabled>Download .json</button>
+            </div>
           </div>
         </section>
 
@@ -73,6 +80,10 @@
               <div class="panel-head compact"><div><span>Evidence</span><h2>Provenance</h2></div></div>
               <div id="provenance-list" class="provenance-list"></div>
             </section>
+            <section class="panel trail-panel">
+              <div class="panel-head compact"><div><span>Codex workflow</span><h2>Evidence → boundary</h2></div></div>
+              <div id="audit-trail" class="audit-trail"></div>
+            </section>
             <section class="honesty-panel">
               <strong>No self-PASS.</strong>
               <p id="caveat">A receipt reports only supplied evidence.</p>
@@ -81,6 +92,22 @@
         </section>
       </main>
     </div>
+    <dialog id="audit-dialog" aria-labelledby="audit-dialog-title">
+      <form id="audit-form" method="dialog">
+        <header>
+          <div><span>Bring your own evidence</span><h2 id="audit-dialog-title">Make one claim inspectable.</h2></div>
+          <button id="close-audit" class="icon-button" type="button" aria-label="Close custom audit">×</button>
+        </header>
+        <p>Paste a PlayReceipt game-evidence document. It is evaluated in memory, never persisted, and capped at 64 KiB.</p>
+        <label for="evidence-input">Evidence JSON</label>
+        <textarea id="evidence-input" spellcheck="false" required></textarea>
+        <output id="audit-error" role="alert"></output>
+        <footer>
+          <span>No account · no upload history</span>
+          <button class="primary-action" type="submit">Issue receipt</button>
+        </footer>
+      </form>
+    </dialog>
     <script type="module" src="/app.js"></script>
   </body>
 </html>

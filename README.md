@@ -29,6 +29,8 @@ npm run demo
 
 Open `http://127.0.0.1:4175`.
 
+The browser includes **Audit your evidence**: paste a JSON evidence bundle (up to 64 KiB), receive the exact same deterministic receipt as the CLI, then copy or download it. The endpoint is credential-free, stores no submission history, and returns `415` for non-JSON requests.
+
 CLI examples:
 
 ```bash
@@ -46,23 +48,39 @@ CLI exit codes are designed for agents and CI:
 | 3 | `UNVERIFIED` | Required evidence is missing |
 | 4 | `HUMAN_REVIEW` | Machine gates pass; human judgment remains |
 
+### GitHub Action
+
+The repository is also a dependency-free JavaScript action. It runs the same audit engine and publishes `verdict` and `receipt-id` outputs. `REPAIR` and `UNVERIFIED` fail the job; `HUMAN_REVIEW` stays successful with a visible warning so automation cannot self-certify fun.
+
+```yaml
+- uses: Yesol-Pilot/playreceipt@main
+  id: playreceipt
+  with:
+    evidence: path/to/game-evidence.json
+
+- run: echo "${{ steps.playreceipt.outputs.verdict }}"
+```
+
+See the executable example in [`.github/workflows/playreceipt.yml`](.github/workflows/playreceipt.yml).
+
 ## The eight gates
 
 PlayReceipt checks deterministic sample size, crash/stall freedom, policy separation, strategic edge over random play, minimum gameplay font size, photosensitivity choice, reduced-motion support, and human fun calibration. Rules and thresholds are explicit in [BUILDSPEC.md](BUILDSPEC.md).
 
 The receipt ID is the first 16 hex characters of a SHA-256 hash over canonical project, date, and gate data. Identical evidence produces an identical receipt.
 
-## Three-case demo
+## Four-path demo
 
 - **Original evidence** — a read-only snapshot copied from `NEO-GENESIS: OVERCLOCK`; verdict `REPAIR`.
 - **Broken sandbox** — deterministic low-signal balance and missing reduced motion; verdict `REPAIR`.
 - **Repaired sandbox** — identical audit rules with measurable strategy signal and accessibility repair; verdict `HUMAN_REVIEW`, because automation cannot certify fun.
+- **Audit your evidence** — a judge-supplied JSON bundle audited live with a copyable/downloadable receipt and a visible ingest → judge → repair-plan → human-boundary trail.
 
 The sandbox is a self-contained demonstration. It is not presented as a repair to the original game.
 
 ## Codex integration
 
-The repository includes a project skill at `.codex/skills/playreceipt/SKILL.md`. Codex can normalize a game's evidence, call the CLI, interpret exit codes, preserve the source, and rerun the same seeds after a repair. This keeps the tool useful beyond its visual dashboard.
+The repository includes a project skill at `.codex/skills/playreceipt/SKILL.md`. Codex can normalize a game's evidence, call the CLI or CI action, interpret exit codes, preserve the source, turn only failed machine gates into a repair plan, and rerun the same seeds after a repair. This keeps the tool useful beyond its visual dashboard.
 
 ## Build Week provenance
 

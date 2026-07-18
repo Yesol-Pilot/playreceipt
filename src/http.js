@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { extname, isAbsolute, join, normalize, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { getReceipt } from "./cases.js";
+import { auditSubmittedEvidence, readSubmittedEvidence } from "./request.js";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const publicRoot = join(root, "public");
@@ -20,6 +21,18 @@ export function createPlayReceiptServer() {
     try {
       const url = new URL(request.url ?? "/", `http://${request.headers.host ?? "localhost"}`);
       if (url.pathname === "/api/receipt") {
+        if (request.method === "POST") {
+          const input = await readSubmittedEvidence(request);
+          const receipt = auditSubmittedEvidence(input);
+          response.writeHead(200, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" });
+          response.end(JSON.stringify(receipt));
+          return;
+        }
+        if (request.method !== "GET") {
+          response.writeHead(405, { "content-type": "application/json; charset=utf-8", allow: "GET, POST" });
+          response.end(JSON.stringify({ error: "Method not allowed" }));
+          return;
+        }
         const receipt = await getReceipt(url.searchParams.get("case") ?? "overclock");
         if (!receipt) {
           response.writeHead(404, { "content-type": "application/json; charset=utf-8" });
@@ -39,9 +52,10 @@ export function createPlayReceiptServer() {
       const body = await readFile(filePath);
       response.writeHead(200, { "content-type": mimeTypes[extname(filePath)] ?? "application/octet-stream" });
       response.end(body);
-    } catch {
-      response.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
-      response.end("Not found");
+    } catch (error) {
+      const statusCode = Number.isInteger(error.statusCode) ? error.statusCode : error instanceof TypeError ? 400 : 404;
+      response.writeHead(statusCode, { "content-type": "application/json; charset=utf-8" });
+      response.end(JSON.stringify({ error: error.message ?? "Not found" }));
     }
   });
 }

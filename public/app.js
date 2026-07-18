@@ -14,7 +14,16 @@ const elements = {
   provenance: document.querySelector("#provenance-list"),
   caveat: document.querySelector("#caveat"),
   checkedAt: document.querySelector("#checked-at"),
+  trail: document.querySelector("#audit-trail"),
+  download: document.querySelector("#download-receipt"),
+  copy: document.querySelector("#copy-receipt"),
+  dialog: document.querySelector("#audit-dialog"),
+  form: document.querySelector("#audit-form"),
+  evidenceInput: document.querySelector("#evidence-input"),
+  auditError: document.querySelector("#audit-error"),
 };
+
+let currentReceipt = null;
 
 const labels = { PASS: "Pass", REPAIR: "Repair", HUMAN_REVIEW: "Human review", UNVERIFIED: "Unverified" };
 const reasons = {
@@ -72,11 +81,17 @@ function renderProvenance(gates) {
     : '<p class="empty">Generated from the deterministic sandbox; no external artifact.</p>';
 }
 
-async function loadCase(caseName) {
-  document.body.dataset.loading = "true";
-  const response = await fetch(`/api/receipt?case=${encodeURIComponent(caseName)}`);
-  if (!response.ok) throw new Error("Unable to load receipt");
-  const receipt = await response.json();
+function renderTrail(trail = []) {
+  elements.trail.innerHTML = trail.map((step, index) => `
+    <div class="trail-step">
+      <span>${String(index + 1).padStart(2, "0")}</span>
+      <div><strong>${escapeHtml(step.stage)}</strong><small>${escapeHtml(step.detail)}</small></div>
+      <b>${escapeHtml(step.state.replaceAll("_", " "))}</b>
+    </div>`).join("");
+}
+
+function renderReceipt(receipt) {
+  currentReceipt = receipt;
   elements.project.textContent = receipt.project;
   elements.verdict.textContent = labels[receipt.verdict];
   elements.verdict.dataset.verdict = receipt.verdict;
@@ -89,9 +104,20 @@ async function loadCase(caseName) {
   elements.unverified.textContent = receipt.counts.unverified;
   elements.caveat.textContent = receipt.caveat;
   elements.checkedAt.textContent = receipt.checkedAt ?? "Generated now";
+  elements.download.disabled = false;
+  elements.copy.disabled = false;
   renderBars(receipt.balance);
   renderGates(receipt.gates);
   renderProvenance(receipt.gates);
+  renderTrail(receipt.trail);
+}
+
+async function loadCase(caseName) {
+  document.body.dataset.loading = "true";
+  const response = await fetch(`/api/receipt?case=${encodeURIComponent(caseName)}`);
+  if (!response.ok) throw new Error("Unable to load receipt");
+  const receipt = await response.json();
+  renderReceipt(receipt);
   document.body.dataset.loading = "false";
 }
 
@@ -101,6 +127,75 @@ document.querySelectorAll("[data-case]").forEach((button) => {
     button.classList.add("active");
     await loadCase(button.dataset.case);
   });
+});
+
+document.querySelector("#open-audit").addEventListener("click", async () => {
+  elements.auditError.textContent = "";
+  if (!elements.evidenceInput.value) {
+    const response = await fetch("/sample-evidence.json");
+    elements.evidenceInput.value = JSON.stringify(await response.json(), null, 2);
+  }
+  elements.dialog.showModal();
+  elements.evidenceInput.focus();
+});
+
+document.querySelector("#close-audit").addEventListener("click", () => elements.dialog.close());
+
+elements.form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  elements.auditError.textContent = "";
+  const submit = elements.form.querySelector("button[type=submit]");
+  submit.disabled = true;
+  submit.textContent = "Issuing…";
+  try {
+    const response = await fetch("/api/receipt", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: elements.evidenceInput.value,
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error ?? "Unable to audit evidence");
+    document.querySelectorAll("[data-case]").forEach((candidate) => candidate.classList.remove("active"));
+    document.querySelector("[data-custom]").classList.add("active");
+    renderReceipt(result);
+    elements.dialog.close();
+    window.scrollTo({ top: 0, behavior: "instant" });
+  } catch (error) {
+    elements.auditError.textContent = error.message;
+  } finally {
+    submit.disabled = false;
+    submit.textContent = "Issue receipt";
+  }
+});
+
+elements.download.addEventListener("click", () => {
+  if (!currentReceipt) return;
+  const blob = new Blob([`${JSON.stringify(currentReceipt, null, 2)}\n`], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `playreceipt-${currentReceipt.receiptId}.json`;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1_000);
+});
+
+elements.copy.addEventListener("click", async () => {
+  if (!currentReceipt) return;
+  const serialized = `${JSON.stringify(currentReceipt, null, 2)}\n`;
+  try {
+    await navigator.clipboard.writeText(serialized);
+  } catch {
+    const fallback = document.createElement("textarea");
+    fallback.value = serialized;
+    document.body.append(fallback);
+    fallback.select();
+    document.execCommand("copy");
+    fallback.remove();
+  }
+  elements.copy.textContent = `Copied · ${currentReceipt.receiptId}`;
+  setTimeout(() => { elements.copy.textContent = "Copy receipt JSON"; }, 1_500);
 });
 
 loadCase("overclock").catch((error) => {

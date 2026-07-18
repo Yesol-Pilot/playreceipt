@@ -1,7 +1,8 @@
 {
   "schema": "playreceipt.request-boundary-verification.v1",
   "verifiedAt": "2026-07-18T17:23:57+09:00",
-  "head": "350ece3dc07eafdac141d43227079cf59ebfa429",
+  "reverifiedAt": "2026-07-18T22:21:06.9338563+09:00",
+  "head": "ede4ad0ce1f30537348842f997f47d7ef3cc297c",
   "contract": {
     "acceptedMediaTypes": [
       "application/json",
@@ -19,10 +20,12 @@
   "verification": {
     "windowsCurrent": "11/11 PASS",
     "windowsNode20": "11/11 PASS",
+    "windowsNode24": "11/11 PASS",
     "linuxWsl": "11/11 PASS",
-    "lineCoveragePercent": 96.77,
-    "branchCoveragePercent": 84.10,
-    "functionCoveragePercent": 96.47,
+    "lineCoveragePercent": 95.04,
+    "branchCoveragePercent": 82.11,
+    "functionCoveragePercent": 94.44,
+    "coverageRuntime": "Node 24.13.1 on Heejin PC",
     "secretScan": "PASS with 0 findings"
   },
   "publicWritesExecuted": false,

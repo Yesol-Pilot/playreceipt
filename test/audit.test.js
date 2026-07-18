@@ -62,8 +62,12 @@ test("missing evidence is UNVERIFIED, never PASS", () => {
 
   const wrongShapes = auditGameEvidence({
     project: "wrong-shapes",
+    checkedAt: { date: "not-a-string" },
+    sourceKind: 7,
     metrics: { balance: { policyWinrates: {} } },
     evidence: [null, "not-an-evidence-record"],
   });
   assert.equal(wrongShapes.gates.find((gate) => gate.id === "balance.policy_separation").verdict, "UNVERIFIED");
+  assert.equal(wrongShapes.checkedAt, null);
+  assert.equal(wrongShapes.sourceKind, "unknown");
 });

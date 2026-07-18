@@ -74,6 +74,8 @@ export function auditGameEvidence(input) {
   if (!input || typeof input !== "object") throw new TypeError("Audit input must be an object");
   if (!input.project || typeof input.project !== "string") throw new TypeError("project is required");
 
+  const checkedAt = typeof input.checkedAt === "string" ? input.checkedAt : undefined;
+  const sourceKind = typeof input.sourceKind === "string" ? input.sourceKind : "unknown";
   const reliability = input.metrics?.reliability ?? {};
   const accessibility = input.metrics?.accessibility ?? {};
   const balance = policyStats(input.metrics?.balance?.policyWinrates);
@@ -214,15 +216,15 @@ export function auditGameEvidence(input) {
   };
   const repairPlan = buildRepairPlan(gates);
   const humanGate = gates.find((item) => item.id === "human.fun");
-  const canonical = JSON.stringify({ project: input.project, checkedAt: input.checkedAt, gates });
+  const canonical = JSON.stringify({ project: input.project, checkedAt, gates });
   const receiptId = createHash("sha256").update(canonical).digest("hex").slice(0, 16);
 
   return {
     schema: "playreceipt.audit.v1",
     receiptId,
     project: input.project,
-    checkedAt: input.checkedAt ?? null,
-    sourceKind: input.sourceKind ?? "unknown",
+    checkedAt: checkedAt ?? null,
+    sourceKind,
     verdict,
     counts,
     balance,

@@ -13,7 +13,11 @@
     {
       "order": 2,
       "path": "docs/evidence/browser/playreceipt-uplift-dialog.png",
-      "caption": "Paste judge-supplied evidence. No account, no upload history."
+      "width": 1280,
+      "height": 720,
+      "sizeBytes": 92352,
+      "sha256": "814cd35cbc87fd151c771ea3b915435ea69641663b2e4f5260be2390d78e8751",
+      "caption": "Paste judge-supplied evidence. In-memory evaluation, no app database or submission history, and a 64 KiB request cap."
     },
     {
       "order": 3,
